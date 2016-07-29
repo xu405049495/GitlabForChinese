@@ -589,10 +589,6 @@ class MergeRequest < ActiveRecord::Base
     end
   end
 
-  def zh_name
-    '合并请求'
-  end
-
   def state_icon_name
     if merged?
       "check"
