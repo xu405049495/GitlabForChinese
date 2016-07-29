@@ -14,24 +14,21 @@ describe RepositoryForkWorker do
   describe "#perform" do
     it "creates a new repository from a fork" do
       expect(shell).to receive(:fork_repository).with(
-        '/test/path',
-        project.path_with_namespace,
         project.repository_storage_path,
+        project.path_with_namespace,
         fork_project.namespace.path
       ).and_return(true)
 
       subject.perform(
         project.id,
-        '/test/path',
         project.path_with_namespace,
         fork_project.namespace.path)
     end
 
     it 'flushes various caches' do
       expect(shell).to receive(:fork_repository).with(
-        '/test/path',
-        project.path_with_namespace,
         project.repository_storage_path,
+        project.path_with_namespace,
         fork_project.namespace.path
       ).and_return(true)
 
@@ -41,7 +38,7 @@ describe RepositoryForkWorker do
       expect_any_instance_of(Repository).to receive(:expire_exists_cache).
         and_call_original
 
-      subject.perform(project.id, '/test/path', project.path_with_namespace,
+      subject.perform(project.id, project.path_with_namespace,
                       fork_project.namespace.path)
     end
 
@@ -52,7 +49,6 @@ describe RepositoryForkWorker do
 
       subject.perform(
         project.id,
-        '/test/path',
         project.path_with_namespace,
         fork_project.namespace.path)
     end

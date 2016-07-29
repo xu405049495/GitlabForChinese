@@ -6,7 +6,8 @@ class Projects::BranchesController < Projects::ApplicationController
   before_action :authorize_push_code!, only: [:new, :create, :destroy]
 
   def index
-    @branches = BranchesFinder.new(@repository, params).execute
+    @sort = params[:sort] || 'name'
+    @branches = @repository.branches_sorted_by(@sort)
     @branches = Kaminari.paginate_array(@branches).page(params[:page])
 
     @max_commits = @branches.reduce(0) do |memo, branch|

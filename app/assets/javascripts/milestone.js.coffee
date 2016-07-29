@@ -7,7 +7,7 @@ class @Milestone
       success: (_data) =>
         @successCallback(_data, li)
       error: (data) ->
-        new Flash("Issue update failed", 'alert')
+        new Flash("更新问题失败", 'alert')
       dataType: "json"
 
   @sortIssues: (data) ->
@@ -20,7 +20,7 @@ class @Milestone
       success: (_data) =>
         @successCallback(_data)
       error: ->
-        new Flash("Issues update failed", 'alert')
+        new Flash("更新问题失败", 'alert')
       dataType: "json"
 
   @sortMergeRequests: (data) ->
@@ -33,7 +33,7 @@ class @Milestone
       success: (_data) =>
         @successCallback(_data)
       error: (data) ->
-        new Flash("Issue update failed", 'alert')
+        new Flash("更新问题失败", 'alert')
       dataType: "json"
 
   @updateMergeRequest: (li, merge_request_url, data) ->
@@ -44,7 +44,7 @@ class @Milestone
       success: (_data) =>
         @successCallback(_data, li)
       error: (data) ->
-        new Flash("Issue update failed", 'alert')
+        new Flash("更新问题失败", 'alert')
       dataType: "json"
 
   @successCallback: (data, element) =>

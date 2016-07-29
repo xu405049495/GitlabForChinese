@@ -200,6 +200,18 @@ describe 'gitlab:app namespace rake task' do
         expect(tar_contents).to match("repositories/#{project_b.path_with_namespace}.bundle")
       end
     end
+
+    context 'registry disabled' do
+      let(:enable_registry) { false }
+
+      it 'should not create registry.tar.gz' do
+        tar_contents, exit_status = Gitlab::Popen.popen(
+          %W{tar -tvf #{@backup_tar}}
+        )
+        expect(exit_status).to eq(0)
+        expect(tar_contents).not_to match('registry.tar.gz')
+      end
+    end
   end # backup_create task
 
   describe "Skipping items" do

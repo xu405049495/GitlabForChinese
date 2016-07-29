@@ -1,27 +1,7 @@
 Please view this file on the master branch, on stable branches it's out of date.
 
-v 8.10.3 (unreleased)
-
-v 8.10.2
-  - User can now search branches by name. !5144
-  - Page is now properly rendered after committing the first file and creating the first branch. !5399
-  - Add branch or tag icon to ref in builds page. !5434
-  - Fix backup restore. !5459
-  - Use project ID in repository cache to prevent stale data from persisting across projects. !5460
-  - Fix issue with autocomplete search not working with enter key. !5466
-  - Add iid to MR API response. !5468
-  - Disable MySQL foreign key checks before dropping all tables. !5472
-  - Ensure relative paths for video are rewritten as we do for images. !5474
-  - Ensure current user can retry a build before showing the 'Retry' button. !5476
-  - Add ENV variable to skip repository storages validations. !5478
-  - Added `*.js.es6 gitlab-language=javascript` to `.gitattributes`. !5486
-  - Don't show comment button in gutter of diffs on MR discussion tab. !5493
-  - Rescue Rugged::OSError (lock exists) when creating references. !5497
-  - Fix expand all diffs button in compare view. !5500
-  - Show release notes in tags list. !5503
-  - Fix a bug where forking a project from a repository storage to another would fail. !5509
-  - Fix missing schema update for `20160722221922`. !5512
-  - Update `gitlab-shell` version to 3.2.1 in the 8.9->8.10 update guide. !5516
+v 8.10.2 (unreleased)
+  - Don't show comment button in gutter of diffs on MR discussion tab
 
 v 8.10.1
   - Refactor repository storages documentation. !5428
@@ -472,6 +452,9 @@ v 8.8.5
   - Prevent unauthorized access for projects build traces
   - Forbid scripting for wiki files
   - Only show notes through JSON on confidential issues that the user has access to
+
+v 8.8.4
+  - Fix LDAP-based login for users with 2FA enabled. !4493
   - Banzai::Filter::UploadLinkFilter use XPath instead CSS expressions
   - Banzai::Filter::ExternalLinkFilter use XPath instead CSS expressions
 

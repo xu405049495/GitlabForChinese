@@ -8,17 +8,17 @@ class @Star
       toggleStar = (isStarred) ->
         $this.parent().find('.star-count').text data.star_count
         if isStarred
-          $starSpan.removeClass('starred').text 'Star'
-          gl.utils.updateTooltipTitle $this, 'Star project'
+          $starSpan.removeClass('starred').text '星标'
+          gl.utils.updateTooltipTitle $this, '星标项目'
           $starIcon.removeClass('fa-star').addClass 'fa-star-o'
         else
-          $starSpan.addClass('starred').text 'Unstar'
-          gl.utils.updateTooltipTitle $this, 'Unstar project'
+          $starSpan.addClass('starred').text '取消星标'
+          gl.utils.updateTooltipTitle $this, '未星标项目'
           $starIcon.removeClass('fa-star-o').addClass 'fa-star'
         return
 
       toggleStar $starSpan.hasClass('starred')
       return
     ).on 'ajax:error', (e, xhr, status, error) ->
-      new Flash('Star toggle failed. Try again later.', 'alert')
+      new Flash('星标切换失败，请稍后重试。', 'alert')
       return

@@ -194,7 +194,7 @@ class @Notes
   renderNote: (note) ->
     unless note.valid
       if note.award
-        new Flash('You have already awarded this emoji!', 'alert')
+        new Flash('你已经赞过！', 'alert')
       return
 
     if note.award
@@ -358,7 +358,7 @@ class @Notes
     @renderNote(note)
 
   addNoteError: (xhr, note, status) =>
-    new Flash('Your comment could not be submitted! Please check your network connection and try again.', 'alert', @parentTimeline)
+    new Flash('无法提交你的评论！请检查你的网络连接后重试。', 'alert', @parentTimeline)
 
   ###
   Called in response to the new note form being submitted

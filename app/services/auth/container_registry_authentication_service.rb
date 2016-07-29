@@ -24,7 +24,7 @@ module Auth
       token[:access] = names.map do |name|
         { type: 'repository', name: name, actions: %w(*) }
       end
-      
+
       token.encoded
     end
 

@@ -1,15 +1,14 @@
 # Interface to the Redis-backed cache store used by the Repository model
 class RepositoryCache
-  attr_reader :namespace, :backend, :project_id
+  attr_reader :namespace, :backend
 
-  def initialize(namespace, project_id, backend = Rails.cache)
+  def initialize(namespace, backend = Rails.cache)
     @namespace = namespace
     @backend = backend
-    @project_id = project_id
   end
 
   def cache_key(type)
-    "#{type}:#{namespace}:#{project_id}"
+    "#{type}:#{namespace}"
   end
 
   def expire(key)

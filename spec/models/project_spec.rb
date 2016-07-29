@@ -1098,6 +1098,15 @@ describe Project, models: true do
     it { is_expected.to eq(project.path_with_namespace.downcase) }
   end
 
+  describe '#container_registry_path_with_namespace' do
+    let(:project) { create(:empty_project, path: 'PROJECT') }
+
+    subject { project.container_registry_path_with_namespace }
+
+    it { is_expected.not_to eq(project.path_with_namespace) }
+    it { is_expected.to eq(project.path_with_namespace.downcase) }
+  end
+
   describe '#container_registry_repository' do
     let(:project) { create(:empty_project) }
 
@@ -1240,32 +1249,6 @@ describe Project, models: true do
 
         expect(builds).to be_kind_of(ActiveRecord::Relation)
         expect(builds).to be_empty
-      end
-    end
-  end
-
-  describe '#add_import_job' do
-    context 'forked' do
-      let(:forked_project_link) { create(:forked_project_link) }
-      let(:forked_from_project) { forked_project_link.forked_from_project }
-      let(:project) { forked_project_link.forked_to_project }
-
-      it 'schedules a RepositoryForkWorker job' do
-        expect(RepositoryForkWorker).to receive(:perform_async).
-          with(project.id, forked_from_project.repository_storage_path,
-              forked_from_project.path_with_namespace, project.namespace.path)
-
-        project.add_import_job
-      end
-    end
-
-    context 'not forked' do
-      let(:project) { create(:project) }
-
-      it 'schedules a RepositoryImportWorker job' do
-        expect(RepositoryImportWorker).to receive(:perform_async).with(project.id)
-
-        project.add_import_job
       end
     end
   end

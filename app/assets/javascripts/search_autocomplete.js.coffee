@@ -63,7 +63,6 @@ class @SearchAutocomplete
         data: @getData.bind(@)
         selectable: true
         clicked: @onClick.bind(@)
-        id: (data) -> _.escape(data.text)
 
   getData: (term, callback) ->
     _this = @
@@ -146,11 +145,11 @@ class @SearchAutocomplete
 
     items = [
       { header: "#{name}" }
-      { text: 'Issues assigned to me', url: "#{issuesPath}/?assignee_id=#{userId}" }
-      { text: "Issues I've created",   url: "#{issuesPath}/?author_id=#{userId}"   }
+      { text: '指派给我的问题', url: "#{issuesPath}/?assignee_id=#{userId}" }
+      { text: "我创建的问题",   url: "#{issuesPath}/?author_id=#{userId}"   }
       'separator'
-      { text: 'Merge requests assigned to me', url: "#{mrPath}/?assignee_id=#{userId}" }
-      { text: "Merge requests I've created",   url: "#{mrPath}/?author_id=#{userId}"   }
+      { text: '指派给我的合并请求', url: "#{mrPath}/?assignee_id=#{userId}" }
+      { text: "我创建的合并请求",   url: "#{mrPath}/?author_id=#{userId}"   }
     ]
 
     items.splice 0, 1 unless name

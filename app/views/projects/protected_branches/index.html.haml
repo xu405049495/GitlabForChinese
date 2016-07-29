@@ -1,21 +1,21 @@
-- page_title "Protected branches"
+- page_title "保护分支"
 
 .row.prepend-top-default.append-bottom-default
   .col-lg-3
     %h4.prepend-top-0
       = page_title
-    %p Keep stable branches secure and force developers to use merge requests.
+    %p 保护稳定分支的安全并强制开发者使用合并请求功能
     %p.prepend-top-20
-      By default, protected branches are designed to:
+      默认情况下，受保护的分支被设计为：
       %ul
-        %li prevent their creation, if not already created, from everybody except Masters
-        %li prevent pushes from everybody except Masters
-        %li prevent <strong>anyone</strong> from force pushing to the branch
-        %li prevent <strong>anyone</strong> from deleting the branch
-      %p.append-bottom-0 Read more about #{link_to "protected branches", help_page_path("user/project/protected_branches"), class: "underlined-link"} and #{link_to "project permissions", help_page_path("user/permissions"), class: "underlined-link"}.
+        %li 禁止除了 主开发人员 外所有人创建已存在的分支
+        %li 禁止除了 主开发人员 外所有人推送
+        %li 禁止 <strong>任何人</strong> 强制推送此分支
+        %li 禁止 <strong>任何人</strong> 删除此分支
+      %p.append-bottom-0 点击 #{link_to "保护分支", help_page_path("user/project/protected_branches"), class: "underlined-link"} 和 #{link_to "项目权限", help_page_path("user/permissions"), class: "underlined-link"}了解更多
   .col-lg-9
     %h5.prepend-top-0
-      Protect a branch
+      保护分支
     - if can? current_user, :admin_project, @project
       = form_for [@project.namespace.becomes(Namespace), @project, @protected_branch] do |f|
         = form_errors(@protected_branch)
@@ -25,26 +25,26 @@
           = render partial: "dropdown", locals: { f: f }
           %p.help-block
             = link_to "Wildcards", help_page_path('user/project/protected_branches', anchor: "wildcard-protected-branches")
-            such as
+            如
             %code *-stable
-            or
+            或
             %code production/*
-            are supported.
+            支持。
 
         .form-group
           = f.check_box :developers_can_push, class: "pull-left"
           .prepend-left-20
-            = f.label :developers_can_push, "Developers can push", class: "label-light append-bottom-0"
+            = f.label :developers_can_push, "开发者可以推送", class: "label-light append-bottom-0"
             %p.light.append-bottom-0
-              Allow developers to push to this branch
+              允许开发者推送到此分支
 
         .form-group
           = f.check_box :developers_can_merge, class: "pull-left"
           .prepend-left-20
-            = f.label :developers_can_merge, "Developers can merge", class: "label-light append-bottom-0"
+            = f.label :developers_can_merge, "开发人员可以合并", class: "label-light append-bottom-0"
             %p.light.append-bottom-0
-              Allow developers to accept merge requests to this branch
-        = f.submit "Protect", class: "btn-create btn protect-branch-btn", disabled: true
+              允许开发人员接受该分支的合并请求
+        = f.submit "保护", class: "btn-create btn protect-branch-btn", disabled: true
 
     %hr
     = render "branches_list"

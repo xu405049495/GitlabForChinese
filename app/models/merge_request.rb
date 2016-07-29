@@ -379,6 +379,18 @@ class MergeRequest < ActiveRecord::Base
     should_remove_source_branch? || force_remove_source_branch?
   end
 
+  def should_remove_source_branch?
+    merge_params['should_remove_source_branch'].present?
+  end
+
+  def force_remove_source_branch?
+    merge_params['force_remove_source_branch'].present?
+  end
+
+  def remove_source_branch?
+    should_remove_source_branch? || force_remove_source_branch?
+  end
+
   def mr_and_commit_notes
     # Fetch comments only from last 100 commits
     commits_for_notes_limit = 100
@@ -490,13 +502,13 @@ class MergeRequest < ActiveRecord::Base
   end
 
   def merge_commit_message
-    message = "Merge branch '#{source_branch}' into '#{target_branch}'"
+    message = "合并分支 '#{source_branch}' 到 '#{target_branch}'"
     message << "\n\n"
     message << title.to_s
     message << "\n\n"
     message << description.to_s
     message << "\n\n"
-    message << "See merge request !#{iid}"
+    message << "查看合并请求 !#{iid}"
     message
   end
 
@@ -569,12 +581,16 @@ class MergeRequest < ActiveRecord::Base
 
   def state_human_name
     if merged?
-      "Merged"
+      "已合并"
     elsif closed?
-      "Closed"
+      "已关闭"
     else
-      "Open"
+      "未关闭"
     end
+  end
+
+  def zh_name
+    '合并请求'
   end
 
   def state_icon_name

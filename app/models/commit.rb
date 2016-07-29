@@ -275,7 +275,7 @@ class Commit
   end
 
   def change_type_title
-    merged_merge_request ? 'merge request' : 'commit'
+    merged_merge_request ? '合并请求' : '提交'
   end
 
   # Get the URI type of the given path
@@ -295,8 +295,8 @@ class Commit
   def uri_type(path)
     entry = @raw.tree.path(path)
     if entry[:type] == :blob
-      blob = ::Blob.decorate(Gitlab::Git::Blob.new(name: entry[:name]))
-      blob.image? || blob.video? ? :raw : :blob
+      blob = Gitlab::Git::Blob.new(name: entry[:name])
+      blob.image? ? :raw : :blob
     else
       entry[:type]
     end

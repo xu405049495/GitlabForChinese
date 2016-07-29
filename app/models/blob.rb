@@ -31,10 +31,6 @@ class Blob < SimpleDelegator
     text? && language && language.name == 'SVG'
   end
 
-  def video?
-    UploaderHelper::VIDEO_EXT.include?(extname.downcase.delete('.'))
-  end
-
   def to_partial_path
     if lfs_pointer?
       'download'

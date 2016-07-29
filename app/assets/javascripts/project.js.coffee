@@ -19,7 +19,6 @@ class @Project
       $('.clone').text(url)
 
     # Ref switcher
-    @initRefSwitcher()
     $('.project-refs-select').on 'change', ->
       $(@).parents('form').submit()
 

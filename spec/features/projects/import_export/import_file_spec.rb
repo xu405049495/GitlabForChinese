@@ -27,7 +27,7 @@ feature 'project import', feature: true, js: true do
     fill_in :project_path, with: 'test-project-path', visible: true
     click_link 'GitLab export'
 
-    expect(page).to have_content('GitLab project export')
+    expect(page).to have_content('GitLab 项目导出')
     expect(URI.parse(current_url).query).to eq('namespace_id=2&path=test-project-path')
 
     attach_file('file', file)
@@ -55,7 +55,7 @@ feature 'project import', feature: true, js: true do
     click_on 'Import project'
 
     page.within('.flash-container') do
-      expect(page).to have_content('Project could not be imported')
+      expect(page).to have_content('不能导入项目')
     end
   end
 
@@ -70,7 +70,7 @@ feature 'project import', feature: true, js: true do
     find(:link, 'GitLab export').trigger('click')
 
     page.within('.flash-container') do
-      expect(page).to have_content('Please enter path and name')
+      expect(page).to have_content('请输入路径和名称')
     end
   end
 
