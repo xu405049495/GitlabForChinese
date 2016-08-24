@@ -82,7 +82,7 @@ describe 'Filter issues', feature: true do
     end
 
     it 'filters by any label' do
-      find('.dropdown-menu-labels a', text: 'Any Label').click
+      find('.dropdown-menu-labels a', text: '所有标签').click
       page.first('.labels-filter .dropdown-title .dropdown-menu-close-icon').click
       wait_for_ajax
 
@@ -90,7 +90,7 @@ describe 'Filter issues', feature: true do
     end
 
     it 'filters by no label' do
-      find('.dropdown-menu-labels a', text: 'No Label').click
+      find('.dropdown-menu-labels a', text: '无标签').click
       page.first('.labels-filter .dropdown-title .dropdown-menu-close-icon').click
       wait_for_ajax
 

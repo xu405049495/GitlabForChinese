@@ -86,6 +86,17 @@ describe Auth::ContainerRegistryAuthenticationService, services: true do
     end
   end
 
+  describe '#full_access_token' do
+    let(:project) { create(:empty_project) }
+    let(:token) { described_class.full_access_token(project.path_with_namespace) }
+
+    subject { { token: token } }
+
+    it_behaves_like 'a accessible' do
+      let(:actions) { ['*'] }
+    end
+  end
+
   context 'user authorization' do
     let(:current_user) { create(:user) }
 

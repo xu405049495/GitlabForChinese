@@ -40,43 +40,43 @@
         - if @build.retried?
           %li.active
             %a
-              Build ##{@build.id}
+              构建 ##{@build.id}
               &middot;
               %i.fa.fa-warning
-              This build was retried.
+              这个构建已经重试。
 
   .blocks-container
     - if can?(current_user, :read_build, @project) && (@build.artifacts? || @build.artifacts_expired?)
       .block{ class: ("block-first" if !@build.coverage) }
         .title
-          Build artifacts
+          构建产品
         - if @build.artifacts_expired?
           %p.build-detail-row
-            The artifacts were removed
+            已删除产品
             #{time_ago_with_tooltip(@build.artifacts_expire_at)}
         - elsif @build.artifacts_expire_at
           %p.build-detail-row
-            The artifacts will be removed in
+            这些产品将被删除
             %span.js-artifacts-remove= @build.artifacts_expire_at
 
         - if @build.artifacts?
           .btn-group.btn-group-justified{ role: :group }
             - if @build.artifacts_expire_at
               = link_to keep_namespace_project_build_artifacts_path(@project.namespace, @project, @build), class: 'btn btn-sm btn-default', method: :post do
-                Keep
+                保持
 
             = link_to download_namespace_project_build_artifacts_path(@project.namespace, @project, @build), class: 'btn btn-sm btn-default' do
-              Download
+              下载
 
             - if @build.artifacts_metadata?
               = link_to browse_namespace_project_build_artifacts_path(@project.namespace, @project, @build), class: 'btn btn-sm btn-default' do
-                Browse
+                浏览
 
     .block{ class: ("block-first" if !@build.coverage && !(can?(current_user, :read_build, @project) && (@build.artifacts? || @build.artifacts_expired?))) }
       .title
         Build details
         - if can?(current_user, :update_build, @build) && @build.retryable?
-          = link_to "Retry", retry_namespace_project_build_path(@project.namespace, @project, @build), class: 'pull-right', method: :post
+          = link_to "重试", retry_namespace_project_build_path(@project.namespace, @project, @build), class: 'pull-right', method: :post
       - if @build.merge_request
         %p.build-detail-row
           %span.build-light-text Merge Request:
@@ -103,17 +103,17 @@
         - if @build.has_trace?
           = link_to 'Raw', raw_namespace_project_build_path(@project.namespace, @project, @build), class: 'btn btn-sm btn-default'
         - if @build.active?
-          = link_to "Cancel", cancel_namespace_project_build_path(@project.namespace, @project, @build), class: 'btn btn-sm btn-default', method: :post
+          = link_to "取消", cancel_namespace_project_build_path(@project.namespace, @project, @build), class: 'btn btn-sm btn-default', method: :post
         - if can?(current_user, :update_build, @project) && @build.erasable?
           = link_to erase_namespace_project_build_path(@project.namespace, @project, @build),
                     class: "btn btn-sm btn-default", method: :post,
-                    data: { confirm: "Are you sure you want to erase this build?" } do
+                    data: { confirm: "您确定要删除此构建吗？" } do
             Erase
 
     - if @build.trigger_request
       .build-widget
         %h4.title
-          Trigger
+          触发
 
         %p
           %span.build-light-text Token:
@@ -130,14 +130,14 @@
 
     .block
       .title
-        Commit title
+        提交信息
       %p.build-light-text.append-bottom-0
         #{@build.pipeline.git_commit_title}
 
     - if @build.tags.any?
       .block
         .title
-          Tags
+          标记
         - @build.tag_list.each do |tag|
           %span.label.label-primary
             = tag

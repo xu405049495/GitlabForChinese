@@ -18,4 +18,4 @@
 
   - if can_admin_project
     %td
-      = link_to 'Unprotect', [@project.namespace.becomes(Namespace), @project, protected_branch], data: { confirm: 'Branch will be writable for developers. Are you sure?' }, method: :delete, class: 'btn btn-warning'
+      = link_to '撤消', [@project.namespace.becomes(Namespace), @project, protected_branch], data: { confirm: '开发者将可写入分支。你确定吗？' }, method: :delete, class: 'btn btn-warning'

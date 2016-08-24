@@ -86,6 +86,18 @@ class Gitlab::Seeder::Builds
 
   def commit_status_create!(pipeline, opts = {})
     attributes = commit_status_attributes_for(pipeline, opts)
+    GenericCommitStatus.create(attributes)
+  end
+
+  def commit_status_attributes_for(pipeline, opts)
+    { name: 'test build', stage: 'test', stage_idx: stage_index(opts[:stage]),
+      ref: 'master', user: build_user, project: @project, pipeline: pipeline,
+      created_at: Time.now, updated_at: Time.now
+    }.merge(opts)
+  end
+
+  def commit_status_create!(pipeline, opts = {})
+    attributes = commit_status_attributes_for(pipeline, opts)
     GenericCommitStatus.create!(attributes)
   end
 
