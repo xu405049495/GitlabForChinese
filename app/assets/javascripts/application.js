@@ -300,7 +300,7 @@
       $topNav = $('.navbar-fixed-top');
       $tooltip = $("#" + ($pinBtn.attr('aria-describedby')));
       doPinNav = !$page.is('.page-sidebar-pinned');
-      tooltipText = 'Pin navigation';
+      tooltipText = '导航锁定';
       $(this).toggleClass('is-active');
       if (doPinNav) {
         $page.addClass('page-sidebar-pinned');
@@ -315,7 +315,7 @@
         expires: 365 * 10
       });
       if ($.cookie('pin_nav') === 'true' || doPinNav) {
-        tooltipText = 'Unpin navigation';
+        tooltipText = '导航解锁';
       }
       $tooltip.find('.tooltip-inner').text(tooltipText);
       return $pinBtn.attr('title', tooltipText).tooltip('fixTitle');
