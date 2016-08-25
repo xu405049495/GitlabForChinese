@@ -27,7 +27,7 @@
 
       - if can? current_user, :push_code, @project
         = link_to new_namespace_project_branch_path(@project.namespace, @project), class: 'btn btn-create' do
-          New branch
+          新分支
 
   - if @branches.any?
     %ul.content-list.all-branches

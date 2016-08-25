@@ -7,9 +7,9 @@
             问题
 
       = nav_link(controller: :boards) do
-        = link_to namespace_project_board_path(@project.namespace, @project), title: 'Board' do
+        = link_to namespace_project_board_path(@project.namespace, @project), title: '面板' do
           %span
-            Board
+            面板
 
     - if project_nav_tab?(:merge_requests) && current_controller?(:merge_requests)
       = nav_link(controller: :merge_requests) do
@@ -19,9 +19,9 @@
 
     - if project_nav_tab? :labels
       = nav_link(controller: :labels) do
-        = link_to namespace_project_labels_path(@project.namespace, @project), title: '标签' do
+        = link_to namespace_project_labels_path(@project.namespace, @project), title: '标记' do
           %span
-            标签
+            标记
 
     - if project_nav_tab? :milestones
       = nav_link(controller: :milestones) do

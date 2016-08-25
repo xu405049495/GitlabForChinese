@@ -96,62 +96,62 @@ module SortingHelper
   end
 
   def sort_value_priority
-    'priority'
+    '优先的'
   end
 
   def sort_value_oldest_updated
-    'updated_asc'
+    '最早更新的'
   end
 
   def sort_value_recently_updated
-    'updated_desc'
+    '最近更新的'
   end
 
   def sort_value_oldest_created
-    'created_asc'
+    '最早创建的'
   end
 
   def sort_value_recently_created
-    'created_desc'
+    '最近创建的'
   end
 
   def sort_value_milestone_soon
-    'milestone_due_asc'
+    '最早的里程碑'
   end
 
   def sort_value_milestone_later
-    'milestone_due_desc'
+    '最近的里程碑'
   end
 
   def sort_value_due_date_soon
-    'due_date_asc'
+    '最早的'
   end
 
   def sort_value_due_date_later
-    'due_date_desc'
+    '最近的'
   end
 
   def sort_value_name
-    'name_asc'
+    '名称'
   end
 
   def sort_value_largest_repo
-    'repository_size_desc'
+    '最大的仓库'
   end
 
   def sort_value_recently_signin
-    'recent_sign_in'
+    '最近登录'
   end
 
   def sort_value_oldest_signin
-    'oldest_sign_in'
+    '最早登录'
   end
 
   def sort_value_downvotes
-    'downvotes_desc'
+    '最不受欢迎'
   end
 
   def sort_value_upvotes
-    'upvotes_desc'
+    '最受欢迎'
   end
 end

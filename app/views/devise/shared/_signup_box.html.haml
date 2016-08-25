@@ -27,4 +27,4 @@
   %p
     %span.light 没有收到确认邮件？
     = succeed '.' do
-      = link_to "请求新的", new_confirmation_path(resource_name)
+      = link_to "重新发送", new_confirmation_path(resource_name)
