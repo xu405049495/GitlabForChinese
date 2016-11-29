@@ -11,22 +11,22 @@
     %p.help-block
       .js-wip-explanation
         %a.js-toggle-wip{ href: '', tabindex: -1 }
-          Remove the
+          从标题中删除
           %code WIP:
-          prefix from the title
-        to allow this
-        %strong Work In Progress
-        merge request to be merged when it's ready.
+          前缀
+        以允许在
+        %strong 工作进行中
+        合并请求在准备就绪时合并。
       .js-no-wip-explanation
         %a.js-toggle-wip{ href: '', tabindex: -1 }
-          Start the title with
+          使用标题前缀
           %code WIP:
-        to prevent a
-        %strong Work In Progress
-        merge request from being merged before it's ready.
+        以防止在
+        %strong 工作进行中
+        合并正在进行中的合并请求。
 
   - if no_issuable_templates && can?(current_user, :push_code, issuable.project)
     %p.help-block
-      Add
-      = link_to 'description templates', help_page_path('user/project/description_templates'), tabindex: -1
-      to help your contributors communicate effectively!
+      添加描述模板
+      = link_to '描述模板', help_page_path('user/project/description_templates'), tabindex: -1
+      来帮助您的贡献者有效沟通！

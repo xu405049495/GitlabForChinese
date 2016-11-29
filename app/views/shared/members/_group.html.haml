@@ -7,11 +7,11 @@
     %strong
       = link_to group.name, group_path(group)
     .cgray
-      Joined #{time_ago_with_tooltip(group.created_at)}
+      加入 #{time_ago_with_tooltip(group.created_at)}
       - if group_link.expires?
         ·
         %span{ class: ('text-warning' if group_link.expires_soon?) }
-          Expires in #{distance_of_time_in_words_to_now(group_link.expires_at)}
+          过期日期在 #{distance_of_time_in_words_to_now(group_link.expires_at)}
   .controls.member-controls
     = form_tag namespace_project_group_link_path(@project.namespace, @project, group_link), method: :put, remote: true, class: 'form-horizontal js-edit-member-form' do
       = select_tag 'group_link[group_access]', options_for_select(ProjectGroupLink.access_options, group_link.group_access), class: 'form-control member-form-control append-right-5 js-member-update-control', id: "member_access_level_#{group.id}", disabled: !can_admin_member
@@ -25,5 +25,5 @@
         data: { confirm: "Are you sure you want to remove #{group.name}?" },
         class: 'btn btn-remove prepend-left-10' do
         %span.visible-xs-block
-          Delete
+          删除
         = icon('trash', class: 'hidden-xs')

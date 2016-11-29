@@ -446,7 +446,7 @@
             </commit-component>
           </div>
           <p v-if="!isFolder && !hasLastDeploymentKey" class="commit-title">
-            No deployments yet
+            尚未部署
           </p>
         </td>
 

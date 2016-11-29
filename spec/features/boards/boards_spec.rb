@@ -24,7 +24,7 @@ describe 'Issue Boards', feature: true, js: true do
     end
 
     it 'shows blank state' do
-      expect(page).to have_content('Welcome to your Issue Board!')
+      expect(page).to have_content('欢迎来到您的问题板！')
     end
 
     it 'hides the blank state when clicking nevermind button' do

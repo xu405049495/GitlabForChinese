@@ -1,15 +1,15 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
-  hello: "Hello world"
+zh:
+  hello: "您好世界"
   errors:
     messages:
-      label_already_exists_at_group_level: "already exists at group level for %{group}. Please choose another one."
-      wrong_size: "is the wrong size (should be %{file_size})"
-      size_too_small: "is too small (should be at least %{file_size})"
-      size_too_big: "is too big (should be at most %{file_size})"
+      label_already_exists_at_group_level: "已存在％{group}的组级。请选择另一个。"
+      wrong_size: "大小错误 (应该是 %{file_size})"
+      size_too_small: "太小 (应该至少 %{file_size})"
+      size_too_big: "太大 (应该不超过 %{file_size})"
   views:
     pagination:
-      previous: "Prev"
-      next: "Next"
+      previous: "上一页"
+      next: "下一页"

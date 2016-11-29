@@ -17,12 +17,12 @@ module Ci
       def grouped_count(query)
         if Gitlab::Database.postgresql?
           query.
-            group("to_char(#{Ci::Build.table_name}.created_at, '01 Month YYYY')").
+            group("to_char(#{Ci::Build.table_name}.created_at, 'YYYY mm 01')").
             count(:created_at).
             transform_keys(&:squish)
         else
           query.
-            group("DATE_FORMAT(#{Ci::Build.table_name}.created_at, '01 %M %Y')").
+            group("DATE_FORMAT(#{Ci::Build.table_name}.created_at, '%Y %m 01')").
             count(:created_at)
         end
       end
@@ -71,7 +71,7 @@ module Ci
       def initialize(*)
         @to     = Date.today.end_of_month
         @from   = @to.years_ago(1).beginning_of_month
-        @format = '%d %B %Y'
+        @format = '%Y-%m-%d'
 
         super
       end
@@ -83,7 +83,7 @@ module Ci
       def initialize(*)
         @to     = Date.today
         @from   = @to - 30.days
-        @format = '%d %B'
+        @format = '%m-%d'
 
         super
       end
@@ -95,7 +95,7 @@ module Ci
       def initialize(*)
         @to     = Date.today
         @from   = @to - 7.days
-        @format = '%d %B'
+        @format = '%m-%d'
 
         super
       end

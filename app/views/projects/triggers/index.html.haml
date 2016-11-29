@@ -1,58 +1,57 @@
-- page_title "Triggers"
+- page_title "触发器"
 
 .row.prepend-top-default.append-bottom-default
   .col-lg-3
     %h4.prepend-top-0
       = page_title
     %p.prepend-top-20
-      Triggers can force a specific branch or tag to get rebuilt with an API call.
+      触发器被 API 调用用于强制重新构建指定的分支或标签。
     %p.append-bottom-0
       = succeed '.' do
-        Learn more in the
-        = link_to 'triggers documentation', help_page_path('ci/triggers/README'), target: '_blank'
+        了解详情请查看
+        = link_to '触发器文档', help_page_path('ci/triggers/README'), target: '_blank'
   .col-lg-9
     .panel.panel-default
       .panel-heading
         %h4.panel-title
-          Manage your project's triggers
+          您的触发器
       .panel-body
         - if @triggers.any?
           .table-responsive
             %table.table
               %thead
                 %th
-                  %strong Token
+                  %strong 授权码
                 %th
-                  %strong Last used
+                  %strong 最后使用
                 %th
               = render partial: 'trigger', collection: @triggers, as: :trigger
         - else
           %p.settings-message.text-center.append-bottom-default
-            No triggers have been created yet. Add one using the button below.
+            没有触发器，请使用下面的按钮增加。
 
         = form_for @trigger, url: url_for(controller: 'projects/triggers', action: 'create') do |f|
-          = f.submit "Add trigger", class: 'btn btn-success'
+          = f.submit "增加触发器", class: 'btn btn-success'
 
       .panel-footer
 
         %p
-          In the following examples, you can see the exact API call you need to
-          make in order to rebuild a specific
-          %code ref
-          (branch or tag) with a trigger token.
+          在下面的例子中，您可以看到确切的API调用，
+          您需要重建一个特定的
+          %code 参考
+          （分支或标记） 触发器令牌。
         %p
-          All you need to do is replace the
+          您需要用触发器令牌和分支或标签的名称分别替换
           %code TOKEN
-          and
+          和
           %code REF_NAME
-          with the trigger token and the branch or tag name respectively.
+          。
 
         %h5.prepend-top-default
-          Use cURL
+          使用 cURL
 
         %p.light
-          Copy one of the tokens above, set your branch or tag name, and that
-          reference will be rebuilt.
+          复制授权码到下面并设置您的分支或标签名。此例子是将触发重新构建。
 
         %pre
           :plain
@@ -60,14 +59,15 @@
                  -F token=TOKEN \
                  -F ref=REF_NAME \
                  #{builds_trigger_url(@project.id)}
+
         %h5.prepend-top-default
-          Use .gitlab-ci.yml
+          使用 .gitlab-ci.yml
 
         %p.light
-          In the
+          复制代码片段到依赖项目的
           %code .gitlab-ci.yml
-          of another project, include the following snippet.
-          The project will be rebuilt at the end of the build.
+          文件。
+          此例子将在依赖项目构建结束试触发此项目重新构建。
 
         %pre
           :plain
@@ -75,23 +75,25 @@
               stage: deploy
               script:
                 - "curl -X POST -F token=TOKEN -F ref=REF_NAME #{builds_trigger_url(@project.id)}"
+
         %h5.prepend-top-default
-          Use webhook
+          使用web钩子
 
         %p.light
-          Add the following webhook to another project for Push and Tag push events.
-          The project will be rebuilt at the corresponding event.
+          将以下web钩子添加到另一个项目中，用于推送和标记推送事件。
+          该项目将在相应的活动中重建。
 
         %pre
           :plain
              #{builds_trigger_url(@project.id, ref: 'REF_NAME')}?token=TOKEN
+
         %h5.prepend-top-default
-          Pass build variables
+          传递构建变量
 
         %p.light
-          Add
+          增加
           %code variables[VARIABLE]=VALUE
-          to an API request. Variable values can be used to distinguish between triggered builds and normal builds.
+          到 API 请求中。变量的值可以被用来区分触发构建。
 
           With cURL:
 
@@ -103,7 +105,7 @@
                  -F "variables[RUN_NIGHTLY_BUILD]=true" \
                  #{builds_trigger_url(@project.id)}
         %p.light
-          With webhook:
+          使用Web钩子：
 
         %pre.append-bottom-0
           :plain

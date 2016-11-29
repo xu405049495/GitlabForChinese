@@ -183,9 +183,9 @@ describe ProjectsHelper do
       it "shows all options" do
         helper.instance_variable_set(:@project, project)
         result = helper.project_feature_access_select(:issues_access_level)
-        expect(result).to include("Disabled")
-        expect(result).to include("Only team members")
-        expect(result).to include("Everyone with access")
+        expect(result).to include("禁用")
+        expect(result).to include("只有团队成员")
+        expect(result).to include("任何人")
       end
     end
 
@@ -195,9 +195,9 @@ describe ProjectsHelper do
       it "shows only allowed options" do
         helper.instance_variable_set(:@project, project)
         result = helper.project_feature_access_select(:issues_access_level)
-        expect(result).to include("Disabled")
-        expect(result).to include("Only team members")
-        expect(result).not_to include("Everyone with access")
+        expect(result).to include("禁用")
+        expect(result).to include("只有团队成员")
+        expect(result).not_to include("任何人")
       end
     end
 
@@ -211,10 +211,10 @@ describe ProjectsHelper do
         helper.instance_variable_set(:@project, project)
         result = helper.project_feature_access_select(:issues_access_level)
 
-        expect(result).to include("Disabled")
-        expect(result).to include("Only team members")
-        expect(result).not_to include("Everyone with access")
-        expect(result).to have_selector('option[selected]', text: "Only team members")
+        expect(result).to include("禁用")
+        expect(result).to include("只有团队成员")
+        expect(result).not_to include("任何人")
+        expect(result).to have_selector('option[selected]', text: "只有团队成员")
       end
     end
   end

@@ -22,18 +22,18 @@ describe 'Edit Project Settings', feature: true do
         it 'toggles visibility' do
           visit edit_namespace_project_path(project.namespace, project)
 
-          select 'Disabled', from: "project_project_feature_attributes_#{tool_name}_access_level"
-          click_button 'Save changes'
+          select '禁用', from: "project_project_feature_attributes_#{tool_name}_access_level"
+          click_button '保存修改'
           wait_for_ajax
           expect(page).not_to have_selector(".shortcuts-#{shortcut_name}")
 
-          select 'Everyone with access', from: "project_project_feature_attributes_#{tool_name}_access_level"
-          click_button 'Save changes'
+          select '任何人', from: "project_project_feature_attributes_#{tool_name}_access_level"
+          click_button '保存修改'
           wait_for_ajax
           expect(page).to have_selector(".shortcuts-#{shortcut_name}")
 
-          select 'Only team members', from: "project_project_feature_attributes_#{tool_name}_access_level"
-          click_button 'Save changes'
+          select '只有团队成员', from: "project_project_feature_attributes_#{tool_name}_access_level"
+          click_button '保存修改'
           wait_for_ajax
           expect(page).to have_selector(".shortcuts-#{shortcut_name}")
 

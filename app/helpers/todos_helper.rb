@@ -83,9 +83,9 @@ module TodosHelper
 
   def todo_actions_options
     [
-      { id: '', text: 'Any Action' },
-      { id: Todo::ASSIGNED, text: 'Assigned' },
-      { id: Todo::MENTIONED, text: 'Mentioned' }
+      { id: '', text: '任何动作' },
+      { id: Todo::ASSIGNED, text: '被指派' },
+      { id: Todo::MENTIONED, text: '被提及' }
     ]
   end
 
@@ -97,14 +97,14 @@ module TodosHelper
       { id: project.id, text: project.name_with_namespace }
     end
 
-    projects.unshift({ id: '', text: 'Any Project' }).to_json
+    projects.unshift({ id: '', text: '任何项目' }).to_json
   end
 
   def todo_types_options
     [
-      { id: '', text: 'Any Type' },
-      { id: 'Issue', text: 'Issue' },
-      { id: 'MergeRequest', text: 'Merge Request' }
+      { id: '', text: '任何类型' },
+      { id: 'Issue', text: '问题' },
+      { id: 'MergeRequest', text: '合并请求' }
     ]
   end
 

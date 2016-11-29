@@ -10,7 +10,7 @@
       this.daySpace = 1;
       this.daySize = 15;
       this.daySizeWithSpace = this.daySize + (this.daySpace * 2);
-      this.monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      this.monthNames = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'];
       this.months = [];
       // Loop through the timestamps to create a group of objects
       // The group of objects will be grouped based on the day of the week they are
@@ -115,11 +115,11 @@
         return function(stamp) {
           var contribText, date, dateText;
           date = new Date(stamp.date);
-          contribText = 'No contributions';
+          contribText = '没有贡献';
           if (stamp.count > 0) {
-            contribText = stamp.count + " contribution" + (stamp.count > 1 ? 's' : '');
+            contribText = stamp.count + "贡献";
           }
-          dateText = dateFormat(date, 'mmm d, yyyy');
+          dateText = dateFormat(date, 'yyyy-mm-dd');
           return contribText + "<br />" + (gl.utils.getDayName(date)) + " " + dateText;
         };
       })(this)).attr('class', 'user-contrib-cell js-tooltip').attr('fill', (function(_this) {
@@ -137,13 +137,13 @@
       var days;
       days = [
         {
-          text: 'M',
+          text: '一',
           y: 29 + (this.daySizeWithSpace * 1)
-        }, {
-          text: 'W',
+        },{
+          text: '三',
           y: 29 + (this.daySizeWithSpace * 3)
-        }, {
-          text: 'F',
+        },{
+          text: '五',
           y: 29 + (this.daySizeWithSpace * 5)
         }
       ];

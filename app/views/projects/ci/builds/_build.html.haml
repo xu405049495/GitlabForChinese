@@ -27,7 +27,7 @@
           = build.tag? ? icon('tag') : icon('code-fork')
         = link_to build.ref, namespace_project_commits_path(build.project.namespace, build.project, build.ref), class: "monospace branch-name"
       - else
-        .light none
+        .light 无
       .icon-container.commit-icon
         = custom_icon("icon_commit")
 
@@ -46,17 +46,17 @@
           %span.label.label-primary
             = tag
       - if build.try(:trigger_request)
-        %span.label.label-info triggered
+        %span.label.label-info 被触发
       - if build.try(:allow_failure)
-        %span.label.label-danger allowed to fail
+        %span.label.label-danger 允许失败
       - if build.manual?
-        %span.label.label-info manual
+        %span.label.label-info 手动的
 
   - if pipeline_link
     %td
       = link_to pipeline_path(build.pipeline) do
         %span.pipeline-id ##{build.pipeline.id}
-      %span by
+      %span 作者
       - if build.pipeline.user
         = user_avatar(user: build.pipeline.user, size: 20)
       - else
@@ -72,7 +72,7 @@
       - if build.try(:runner)
         = runner_link(build.runner)
       - else
-        .light none
+        .light 无
 
   - if stage
     %td
@@ -100,16 +100,16 @@
   %td
     .pull-right
       - if can?(current_user, :read_build, build) && build.artifacts?
-        = link_to download_namespace_project_build_artifacts_path(build.project.namespace, build.project, build), title: 'Download artifacts', class: 'btn btn-build' do
+        = link_to download_namespace_project_build_artifacts_path(build.project.namespace, build.project, build), title: '下载附件', class: 'btn btn-build' do
           = icon('download')
       - if can?(current_user, :update_build, build)
         - if build.active?
-          = link_to cancel_namespace_project_build_path(build.project.namespace, build.project, build, return_to: request.original_url), method: :post, title: 'Cancel', class: 'btn btn-build' do
+          = link_to cancel_namespace_project_build_path(build.project.namespace, build.project, build, return_to: request.original_url), method: :post, title: '取消', class: 'btn btn-build' do
             = icon('remove', class: 'cred')
         - elsif allow_retry
           - if build.retryable?
-            = link_to retry_namespace_project_build_path(build.project.namespace, build.project, build, return_to: request.original_url), method: :post, title: 'Retry', class: 'btn btn-build' do
+            = link_to retry_namespace_project_build_path(build.project.namespace, build.project, build, return_to: request.original_url), method: :post, title: '重试', class: 'btn btn-build' do
               = icon('repeat')
           - elsif build.playable? && !admin
-            = link_to play_namespace_project_build_path(build.project.namespace, build.project, build, return_to: request.original_url), method: :post, title: 'Play', class: 'btn btn-build' do
+            = link_to play_namespace_project_build_path(build.project.namespace, build.project, build, return_to: request.original_url), method: :post, title: '运行', class: 'btn btn-build' do
               = custom_icon('icon_play')

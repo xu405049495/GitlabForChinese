@@ -6,7 +6,7 @@
   %td
     - if protected_branch.wildcard?
       - matching_branches = protected_branch.matching(repository.branches)
-      = link_to pluralize(matching_branches.count, "matching branch"), namespace_project_protected_branch_path(@project.namespace, @project, protected_branch)
+      = link_to "匹配分支", namespace_project_protected_branch_path(@project.namespace, @project, protected_branch)
     - else
       - if commit = protected_branch.commit
         = link_to(commit.short_id, namespace_project_commit_path(@project.namespace, @project, commit.id), class: 'commit_short_id')
@@ -18,4 +18,4 @@
 
   - if can_admin_project
     %td
-      = link_to 'Unprotect', [@project.namespace.becomes(Namespace), @project, protected_branch], data: { confirm: 'Branch will be writable for developers. Are you sure?' }, method: :delete, class: 'btn btn-warning'
+      = link_to '撤消', [@project.namespace.becomes(Namespace), @project, protected_branch], data: { confirm: '开发者将可写入分支。您确定吗？' }, method: :delete, class: 'btn btn-warning'

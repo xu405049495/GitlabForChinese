@@ -1,15 +1,15 @@
 %form.gl-show-field-errors{action: 'submit', method: 'post'}
   .form-group
-    %input.required-text{required: true, type: 'text'} Text
+    %input.required-text{required: true, type: 'text'} 文本
   .form-group
-    %input.email{type: 'email', title: 'Please provide a valid email address.', required: true } Email
+    %input.email{type: 'email', title: '请提供有效的电子邮件地址。', required: true } Email
   .form-group
-    %input.password{type: 'password', required: true} Password
+    %input.password{type: 'password', required: true} 密码
   .form-group
-    %input.alphanumeric{type: 'text', pattern: '[a-zA-Z0-9]', required: true} Alphanumeric
+    %input.alphanumeric{type: 'text', pattern: '[a-zA-Z0-9]', required: true} 字母数字
   .form-group
     %input.hidden{ type:'hidden' }
   .form-group
-    %input.custom.gl-field-error-ignore{ type:'text' } Custom, do not validate
+    %input.custom.gl-field-error-ignore{ type:'text' } 自定义，不验证
   .form-group
-  %input.submit{type: 'submit'} Submit
+  %input.submit{type: 'submit'} 提交

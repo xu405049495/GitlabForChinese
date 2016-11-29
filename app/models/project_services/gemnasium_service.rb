@@ -9,7 +9,7 @@ class GemnasiumService < Service
   end
 
   def description
-    'Gemnasium monitors your project dependencies and alerts you about updates and security vulnerabilities.'
+    'Gemnasium监视您的项目依赖关系，并提醒您有关更新和安全漏洞。'
   end
 
   def to_param
@@ -18,8 +18,8 @@ class GemnasiumService < Service
 
   def fields
     [
-      { type: 'text', name: 'api_key', placeholder: 'Your personal API KEY on gemnasium.com ' },
-      { type: 'text', name: 'token', placeholder: 'The project\'s slug on gemnasium.com' }
+      { type: 'text', name: 'api_key', placeholder: 'gemnasium.com上的您的个人API密钥 ' },
+      { type: 'text', name: 'token', placeholder: '该项目在gemnasium.com上的授权' }
     ]
   end
 

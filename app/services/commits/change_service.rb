@@ -44,7 +44,7 @@ module Commits
       allowed = ::Gitlab::UserAccess.new(current_user, project: project).can_push_to_branch?(@target_branch)
 
       unless allowed
-        raise ValidationError.new('You are not allowed to push into this branch')
+        raise ValidationError.new('您不允许推送到此分支')
       end
 
       true

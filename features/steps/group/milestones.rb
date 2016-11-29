@@ -33,7 +33,7 @@ class Spinach::Features::GroupMilestones < Spinach::FeatureSteps
   end
 
   step 'I should see group milestone with descriptions and expiry date' do
-    expect(page).to have_content('expires on Aug 20, 2114')
+    expect(page).to have_content('到期日 Aug 20, 2114')
   end
 
   step 'I should see group milestone with all issues and MRs assigned to that milestone' do

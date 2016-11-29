@@ -13,7 +13,7 @@
         .inline.note-headline-light
           = note.author.to_reference
           - unless note.system
-            commented
+            评论了
           - if note.system
             %span{class: 'system-note-message'}
               = h(note.note_html.downcase.html_safe)
@@ -52,14 +52,14 @@
 
             - if current_user
               - if note.emoji_awardable?
-                = link_to '#', title: 'Award Emoji', class: 'note-action-button note-emoji-button js-add-award js-note-emoji', data: { position: 'right' } do
+                = link_to '#', title: '使用Emoji', class: 'note-action-button note-emoji-button js-add-award js-note-emoji', data: { position: 'right' } do
                   = icon('spinner spin')
                   = icon('smile-o', class: 'link-highlight')
 
               - if note_editable
-                = link_to '#', title: 'Edit comment', class: 'note-action-button js-note-edit' do
+                = link_to '#', title: '编辑评论', class: 'note-action-button js-note-edit' do
                   = icon('pencil', class: 'link-highlight')
-                = link_to namespace_project_note_path(note.project.namespace, note.project, note), title: 'Remove comment', method: :delete, data: { confirm: 'Are you sure you want to remove this comment?' }, remote: true, class: 'note-action-button hidden-xs js-note-delete danger' do
+                = link_to namespace_project_note_path(note.project.namespace, note.project, note), title: 'Remove comment', method: :delete, data: { confirm: '确定要删除评论么？' }, remote: true, class: 'note-action-button hidden-xs js-note-delete danger' do
                   = icon('trash-o', class: 'danger-highlight')
       .note-body{class: note_editable ? 'js-task-list-container' : ''}
         .note-text.md
@@ -83,5 +83,5 @@
               = icon('paperclip')
               = note.attachment_identifier
               = link_to delete_attachment_namespace_project_note_path(note.project.namespace, note.project, note),
-                title: 'Delete this attachment', method: :delete, remote: true, data: { confirm: 'Are you sure you want to remove the attachment?' }, class: 'danger js-note-attachment-delete' do
+                title: '删除此附件', method: :delete, remote: true, data: { confirm: '确定要删除此附件么？' }, class: 'danger js-note-attachment-delete' do
                 = icon('trash-o', class: 'cred')

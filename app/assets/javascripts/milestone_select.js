@@ -43,21 +43,21 @@
                 extraOptions.push({
                   id: 0,
                   name: '',
-                  title: 'Any Milestone'
+                  title: '任何里程碑'
                 });
               }
               if (showNo) {
                 extraOptions.push({
                   id: -1,
-                  name: 'No Milestone',
-                  title: 'No Milestone'
+                  name: '没有里程碑',
+                  title: '没有里程碑'
                 });
               }
               if (showUpcoming) {
                 extraOptions.push({
                   id: -2,
-                  name: '#upcoming',
-                  title: 'Upcoming'
+                  name: '#即将到来',
+                  title: '即将到来'
                 });
               }
               if (extraOptions.length) {

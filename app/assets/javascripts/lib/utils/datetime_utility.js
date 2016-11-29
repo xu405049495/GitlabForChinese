@@ -8,7 +8,7 @@
     if ((base = w.gl).utils == null) {
       base.utils = {};
     }
-    w.gl.utils.days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    w.gl.utils.days = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 
     w.gl.utils.formatDate = function(datetime) {
       return dateFormat(datetime, 'mmm d, yyyy h:MMtt Z');
@@ -40,20 +40,20 @@
     w.gl.utils.getTimeago = function() {
       var locale = function(number, index) {
         return [
-          ['less than a minute ago', 'a while'],
-          ['less than a minute ago', 'in %s seconds'],
-          ['about a minute ago', 'in 1 minute'],
-          ['%s minutes ago', 'in %s minutes'],
-          ['about an hour ago', 'in 1 hour'],
-          ['about %s hours ago', 'in %s hours'],
-          ['a day ago', 'in 1 day'],
-          ['%s days ago', 'in %s days'],
-          ['a week ago', 'in 1 week'],
-          ['%s weeks ago', 'in %s weeks'],
-          ['a month ago', 'in 1 month'],
-          ['%s months ago', 'in %s months'],
-          ['a year ago', 'in 1 year'],
-          ['%s years ago', 'in %s years']
+          ['不到 1 分钟前', '刚刚前'],
+          ['不到 1 分钟前', '%s 秒'],
+          ['大约 1 分钟前', '1 分钟'],
+          ['%s 分钟前', '%s 分钟'],
+          ['大约 1 小时前', '1 小时'],
+          ['大约 %s 小时前', '%s 小时'],
+          ['1 天前', '1 天'],
+          ['%s 天前', '%s 天'],
+          ['1 星期前', '1 星期'],
+          ['%s 星期前', '%s 星期'],
+          ['1 个月前', '1 个月'],
+          ['%s 个月前', '%s 个月'],
+          ['1 年前', '1 年前'],
+          ['%s 年前', '%s 年']
         ][index];
       };
 

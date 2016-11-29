@@ -74,7 +74,7 @@ class Projects::LabelsController < Projects::ApplicationController
     respond_to do |format|
       format.html do
         redirect_to(namespace_project_labels_path(@project.namespace, @project),
-                    notice: 'Label was removed')
+                    notice: '标记已删除')
       end
       format.js
     end
@@ -126,6 +126,10 @@ class Projects::LabelsController < Projects::ApplicationController
 
   def subscribable_resource
     @available_labels.find(params[:id])
+  end
+
+  def find_labels
+    @available_labels ||= LabelsFinder.new(current_user, project_id: @project.id).execute
   end
 
   def find_labels

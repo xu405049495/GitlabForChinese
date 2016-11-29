@@ -12,7 +12,7 @@ class MattermostSlashCommandsService < ChatService
   end
 
   def description
-    "Perform common operations on GitLab in Mattermost"
+    "在Mattermost中对GitLab执行常见操作"
   end
 
   def to_param

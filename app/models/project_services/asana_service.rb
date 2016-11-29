@@ -9,19 +9,14 @@ class AsanaService < Service
   end
 
   def description
-    'Asana - Teamwork without email'
+    'Asana - 没有电子邮件的团队合作'
   end
 
   def help
-    'This service adds commit messages as comments to Asana tasks.
-Once enabled, commit messages are checked for Asana task URLs
-(for example, `https://app.asana.com/0/123456/987654`) or task IDs
-starting with # (for example, `#987654`). Every task ID found will
-get the commit comment added to it.
-
-You can also close a task with a message containing: `fix #123456`.
-
-You can create a Personal Access Token here:
+    '此服务将提交消息作为注释添加到Asana任务。
+启用后，将检查提交邮件是否包含Asana任务网址（例如，“https：// app.asana.com / 0/123456/987654”）或以＃开头的任务ID（例如，＃987654）。找到的每个任务ID将获得添加的提交注释。
+您还可以使用包含以下内容的消息关闭任务：`fix＃123456`。
+您可以在此处创建个人访问令牌：
 http://app.asana.com/-/account_api'
   end
 
@@ -34,12 +29,12 @@ http://app.asana.com/-/account_api'
       {
         type: 'text',
         name: 'api_key',
-        placeholder: 'User Personal Access Token. User must have access to task, all comments will be attributed to this user.'
+        placeholder: '用户个人访问令牌。用户必须有权访问任务，所有评论都将归因于此用户。'
       },
       {
         type: 'text',
         name: 'restrict_to_branch',
-        placeholder: 'Comma-separated list of branches which will be automatically inspected. Leave blank to include all branches.'
+        placeholder: '将自动检查的分支的逗号分隔列表。留为空白以包括所有分支。'
       }
     ]
   end
@@ -70,7 +65,7 @@ http://app.asana.com/-/account_api'
     project_name = project.name_with_namespace
 
     data[:commits].each do |commit|
-      push_msg = "#{user} pushed to branch #{branch} of #{project_name} ( #{commit[:url]} ):"
+      push_msg = "#{user} 推送了 #{project_name} 的 #{branch} 分支 ( #{commit[:url]} )："
       check_commit(commit[:message], push_msg)
     end
   end

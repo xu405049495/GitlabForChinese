@@ -8,11 +8,11 @@ class PipelinesEmailService < Service
   end
 
   def title
-    'Pipelines emails'
+    'Pipelines 邮件'
   end
 
   def description
-    'Email the pipelines status to a list of recipients.'
+    '将管道状态发送到收件人列表。'
   end
 
   def to_param
@@ -40,7 +40,7 @@ class PipelinesEmailService < Service
   end
 
   def disabled_title
-    'Please setup a pipeline on your repository.'
+    '请在您的存储库中设置管道。'
   end
 
   def test_data(project, user)
@@ -53,7 +53,7 @@ class PipelinesEmailService < Service
     [
       { type: 'textarea',
         name: 'recipients',
-        placeholder: 'Emails separated by comma' },
+        placeholder: '电子邮件以逗号分隔' },
       { type: 'checkbox',
         name: 'notify_only_broken_pipelines' },
     ]

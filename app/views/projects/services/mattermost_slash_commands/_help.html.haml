@@ -2,90 +2,90 @@
 - run_actions_text = "Perform common operations on this project: #{pretty_path_with_namespace}"
 
 .well
-  This service allows GitLab users to perform common operations on this
-  project by entering slash commands in Mattermost.
+  此服务允许GitLab用户对此执行常见操作
+ 项目通过在Mattermost中输入斜杠命令。
   %br
-  See list of available commands in Mattermost after setting up this service,
-  by entering
+  在设置此服务后，请通过输入
   %code /&lt;command_trigger_word&gt; help
+  来查看Mattermost中的可用命令列表
   %br
   %br
-  To setup this service:
+  要设置此服务：
   %ul.list-unstyled
     %li
       1.
       = link_to 'Enable custom slash commands', 'https://docs.mattermost.com/developer/slash-commands.html#enabling-custom-commands'
-      on your Mattermost installation
+      安装你的Mattermost
     %li
       2.
       = link_to 'Add a slash command', 'https://docs.mattermost.com/developer/slash-commands.html#set-up-a-custom-command'
-      in Mattermost with these options:
+      Mattermost选项：
 
   %hr
 
   .help-form
     .form-group
-      = label_tag :display_name, 'Display name', class: 'col-sm-2 col-xs-12 control-label'
+      = label_tag :display_name, '显示名称', class: 'col-sm-2 col-xs-12 control-label'
       .col-sm-10.col-xs-12.input-group
         = text_field_tag :display_name, "GitLab / #{pretty_path_with_namespace}", class: 'form-control input-sm', readonly: 'readonly'
         .input-group-btn
           = clipboard_button(clipboard_target: '#display_name')
 
     .form-group
-      = label_tag :description, 'Description', class: 'col-sm-2 col-xs-12 control-label'
+      = label_tag :description, '描述', class: 'col-sm-2 col-xs-12 control-label'
       .col-sm-10.col-xs-12.input-group
         = text_field_tag :description, run_actions_text, class: 'form-control input-sm', readonly: 'readonly'
         .input-group-btn
           = clipboard_button(clipboard_target: '#description')
 
     .form-group
-      = label_tag nil, 'Command trigger word', class: 'col-sm-2 col-xs-12 control-label'
+      = label_tag nil, '命令触发文本', class: 'col-sm-2 col-xs-12 control-label'
       .col-sm-10.col-xs-12.text-block
-        %p Fill in the word that works best for your team.
+        %p 填写最适合您团队的词。
         %p
-          Suggestions:
+          建议：
           %code= 'gitlab'
           %code= @project.path # Path contains no spaces, but dashes
           %code= @project.path_with_namespace
 
     .form-group
-      = label_tag :request_url, 'Request URL', class: 'col-sm-2 col-xs-12 control-label'
+      = label_tag :request_url, '请求URL', class: 'col-sm-2 col-xs-12 control-label'
       .col-sm-10.col-xs-12.input-group
         = text_field_tag :request_url, service_trigger_url(subject), class: 'form-control input-sm', readonly: 'readonly'
         .input-group-btn
           = clipboard_button(clipboard_target: '#request_url')
 
     .form-group
-      = label_tag nil, 'Request method', class: 'col-sm-2 col-xs-12 control-label'
+      = label_tag nil, '请求方法', class: 'col-sm-2 col-xs-12 control-label'
       .col-sm-10.col-xs-12.text-block POST
 
     .form-group
-      = label_tag :response_username, 'Response username', class: 'col-sm-2 col-xs-12 control-label'
+      = label_tag :response_username, '响应用户名', class: 'col-sm-2 col-xs-12 control-label'
       .col-sm-10.col-xs-12.input-group
         = text_field_tag :response_username, 'GitLab', class: 'form-control input-sm', readonly: 'readonly'
         .input-group-btn
           = clipboard_button(clipboard_target: '#response_username')
 
     .form-group
-      = label_tag :response_icon, 'Response icon', class: 'col-sm-2 col-xs-12 control-label'
+      = label_tag :response_icon, '响应icon', class: 'col-sm-2 col-xs-12 control-label'
       .col-sm-10.col-xs-12.input-group
         = text_field_tag :response_icon, asset_url('gitlab_logo.png'), class: 'form-control input-sm', readonly: 'readonly'
         .input-group-btn
           = clipboard_button(clipboard_target: '#response_icon')
 
     .form-group
-      = label_tag nil, 'Autocomplete', class: 'col-sm-2 col-xs-12 control-label'
+      = label_tag nil, '自动完成', class: 'col-sm-2 col-xs-12 control-label'
       .col-sm-10.col-xs-12.text-block Yes
 
     .form-group
-      = label_tag :autocomplete_hint, 'Autocomplete hint', class: 'col-sm-2 col-xs-12 control-label'
+      = label_tag :autocomplete_hint, '自动完成提示', class: 'col-sm-2 col-xs-12 control-label'
       .col-sm-10.col-xs-12.input-group
         = text_field_tag :autocomplete_hint, '[help]', class: 'form-control input-sm', readonly: 'readonly'
         .input-group-btn
           = clipboard_button(clipboard_target: '#autocomplete_hint')
 
     .form-group
-      = label_tag :autocomplete_description, 'Autocomplete description', class: 'col-sm-2 col-xs-12 control-label'
+      = label_tag :autocomplete_description, '自动完成说明', class: 'col-sm-2 col-xs-12 control-label'
       .col-sm-10.col-xs-12.input-group
         = text_field_tag :autocomplete_description, run_actions_text, class: 'form-control input-sm', readonly: 'readonly'
         .input-group-btn
@@ -95,6 +95,6 @@
 
   %ul.list-unstyled
     %li
-      3. After adding the slash command, paste the
-      %strong token
-      into the field below
+      3. 添加斜杠命令后，将
+      %strong 令牌
+      粘贴到下面的字段中

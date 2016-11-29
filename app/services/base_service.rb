@@ -41,7 +41,7 @@ class BaseService
 
     level_name = Gitlab::VisibilityLevel.level_name(denied_visibility_level).downcase
 
-    model.errors.add(:visibility_level, "#{level_name} has been restricted by your GitLab administrator")
+    model.errors.add(:visibility_level, "#{level_name} 已被您的GitLab管理员限制")
   end
 
   private

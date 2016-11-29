@@ -1,4 +1,4 @@
-- page_title "CI/CD Pipelines"
+- page_title "CI/CD 管道"
 
 .row.prepend-top-default
   .col-lg-3.profile-settings-sidebar
@@ -9,20 +9,20 @@
       %fieldset.builds-feature
         - unless @repository.gitlab_ci_yml
           .form-group
-            %p Pipelines need to be configured before you can begin using Continuous Integration.
-            = link_to 'Get started with CI/CD Pipelines', help_page_path('ci/quick_start/README'), class: 'btn btn-info'
+            %p 管道需要在您开始使用连续集成之前进行配置。
+            = link_to '开始使用CI / CD管道', help_page_path('ci/quick_start/README'), class: 'btn btn-info'
             %hr
         .form-group.append-bottom-default
-          = f.label :runners_token, "Runner token", class: 'label-light'
+          = f.label :runners_token, "Runner令牌", class: 'label-light'
           = f.text_field :runners_token, class: "form-control", placeholder: 'xEeFCaDAB89'
-          %p.help-block The secure token used by the Runner to checkout the project
+          %p.help-block Runner用来签出项目的安全令牌
 
         %hr
         .form-group
           %h5.prepend-top-0
-            Git strategy for pipelines
+            管道的Git策略
           %p
-            Choose between <code>clone</code> or <code>fetch</code> to get the recent application code
+            在 <code>clone</code> 或 <code>fetch</code> 之间选择以获取最近的应用程序代码
             = link_to icon('question-circle'), help_page_path('user/project/pipelines/settings', anchor: 'git-strategy')
           .radio
             = f.label :build_allow_git_fetch_false do
@@ -30,21 +30,21 @@
               %strong git clone
               %br
               %span.descr
-                Slower but makes sure the project workspace is pristine as it clones the repository from scratch for every job
+                较慢，但确保项目工作区是原始的，因为它从零开始为每个作业克隆存储库
           .radio
             = f.label :build_allow_git_fetch_true do
               = f.radio_button :build_allow_git_fetch, 'true'
               %strong git fetch
               %br
               %span.descr
-                Faster as it re-uses the project workspace (falling back to clone if it doesn't exist)
+                更快地重新使用项目工作空间（如果不存在则回退到clone）
 
         %hr
         .form-group
-          = f.label :build_timeout_in_minutes, 'Timeout', class: 'label-light'
+          = f.label :build_timeout_in_minutes, '超时', class: 'label-light'
           = f.number_field :build_timeout_in_minutes, class: 'form-control', min: '0'
           %p.help-block
-            Per job in minutes. If a job passes this threshold, it will be marked as failed.
+            每次构建超时分钟。如果作业通过此阈值，它将被标记为失败。
             = link_to icon('question-circle'), help_page_path('user/project/pipelines/settings', anchor: 'timeout')
 
         %hr
@@ -52,24 +52,24 @@
           .checkbox
             = f.label :public_builds do
               = f.check_box :public_builds
-              %strong Public pipelines
+              %strong 公共管道
             .help-block
-              Allow everyone to access pipelines for public and internal projects
+              允许每个人访问公共和内部项目的管道
               = link_to icon('question-circle'), help_page_path('user/project/pipelines/settings', anchor: 'visibility-of-pipelines')
 
         %hr
         .form-group
-          = f.label :build_coverage_regex, "Test coverage parsing", class: 'label-light'
+          = f.label :build_coverage_regex, "测试覆盖率分析", class: 'label-light'
           .input-group
             %span.input-group-addon /
             = f.text_field :build_coverage_regex, class: 'form-control', placeholder: '\(\d+.\d+\%\) covered'
             %span.input-group-addon /
           %p.help-block
-            A regular expression that will be used to find the test coverage
-            output in the build trace. Leave blank to disable
+            我们将使用这个正则表达式来查找生成跟踪中的测试覆盖率输出。
+            如果您想禁用此功能，就留下空白
             = link_to icon('question-circle'), help_page_path('user/project/pipelines/settings', anchor: 'test-coverage-parsing')
           .bs-callout.bs-callout-info
-            %p Below are examples of regex for existing tools:
+            %p 以下是现有工具的正则表达式的例子：
             %ul
               %li
                 Simplecov (Ruby) -
@@ -87,8 +87,7 @@
                 tap --coverage-report=text-summary (NodeJS) -
                 %code ^Statements\s*:\s*([^%]+)
 
-        = f.submit 'Save changes', class: "btn btn-save"
-
+        = f.submit '保存修改', class: "btn btn-save"
 %hr
 
 .row.prepend-top-default

@@ -156,7 +156,7 @@
           <ul v-if="!isLoading" class="nav-links">
             <li v-bind:class="{ 'active': scope === undefined }">
               <a :href="projectEnvironmentsPath">
-                Available
+                活动的
                 <span class="badge js-available-environments-count">
                   {{state.availableCounter}}
                 </span>
@@ -164,7 +164,7 @@
             </li>
             <li v-bind:class="{ 'active' : scope === 'stopped' }">
               <a :href="projectStoppedEnvironmentsPath">
-                Stopped
+                停止的
                 <span class="badge js-stopped-environments-count">
                   {{state.stoppedCounter}}
                 </span>
@@ -173,7 +173,7 @@
           </ul>
           <div v-if="canCreateEnvironmentParsed && !isLoading" class="nav-controls">
             <a :href="newEnvironmentPath" class="btn btn-create">
-              New environment
+              新环境
             </a>
           </div>
         </div>
@@ -186,13 +186,13 @@
           <div class="blank-state blank-state-no-icon"
             v-if="!isLoading && state.environments.length === 0">
             <h2 class="blank-state-title">
-              You don't have any environments right now.
+              你现在没有任何环境。
             </h2>
             <p class="blank-state-text">
-              Environments are places where code gets deployed, such as staging or production.
+              环境是部署代码的地方，例如暂存或生产。
               <br />
               <a :href="helpPagePath">
-                Read more about environments
+                阅读更多关于环境
               </a>
             </p>
 
@@ -200,7 +200,7 @@
               v-if="canCreateEnvironmentParsed"
               :href="newEnvironmentPath"
               class="btn btn-create">
-              New Environment
+              新环境
             </a>
           </div>
 
@@ -209,10 +209,10 @@
             <table class="table ci-table environments">
               <thead>
                 <tr>
-                  <th class="environments-name">Environment</th>
-                  <th class="environments-deploy">Last deployment</th>
-                  <th class="environments-build">Build</th>
-                  <th class="environments-commit">Commit</th>
+                  <th class="environments-name">环境</th>
+                  <th class="environments-deploy">最后部署</th>
+                  <th class="environments-build">构建</th>
+                  <th class="environments-commit">提交</th>
                   <th class="environments-date"></th>
                   <th class="hidden-xs environments-actions"></th>
                 </tr>

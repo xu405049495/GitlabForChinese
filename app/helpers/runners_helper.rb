@@ -5,7 +5,7 @@ module RunnersHelper
     when :not_connected
       content_tag :i, nil,
                   class: "fa fa-warning",
-                  title: "New runner. Has not connected yet"
+                  title: "新 runner. 尚未链接"
 
     when :online, :offline, :paused
       content_tag :i, nil,

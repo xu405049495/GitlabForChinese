@@ -15,7 +15,7 @@ class BugzillaService < IssueTrackerService
     if self.properties && self.properties['description'].present?
       self.properties['description']
     else
-      'Bugzilla issue tracker'
+      'Bugzilla问题跟踪'
     end
   end
 

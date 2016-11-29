@@ -1,73 +1,73 @@
-en:
+cn:
   activerecord:
     errors:
       models:
         application:
           attributes:
             redirect_uri:
-              fragment_present: 'cannot contain a fragment.'
-              invalid_uri: 'must be a valid URI.'
-              relative_uri: 'must be an absolute URI.'
+              fragment_present: '不能包含片段。'
+              invalid_uri: '必须是有效的 URI 格式。'
+              relative_uri: '必须是绝对的 URI 地址。'
   mongoid:
     errors:
       models:
         application:
           attributes:
             redirect_uri:
-              fragment_present: 'cannot contain a fragment.'
-              invalid_uri: 'must be a valid URI.'
-              relative_uri: 'must be an absolute URI.'
+              fragment_present: '不能包含片段。'
+              invalid_uri: '必须是有效的 URI 格式。'
+              relative_uri: '必须是绝对的 URI 地址。'
   mongo_mapper:
     errors:
       models:
         application:
           attributes:
             redirect_uri:
-              fragment_present: 'cannot contain a fragment.'
-              invalid_uri: 'must be a valid URI.'
-              relative_uri: 'must be an absolute URI.'
+              fragment_present: '不能包含片段。'
+              invalid_uri: '必须是有效的 URI 格式。'
+              relative_uri: '必须是绝对的 URI 地址。'
   doorkeeper:
     errors:
       messages:
         # Common error messages
-        invalid_request: 'The request is missing a required parameter, includes an unsupported parameter value, or is otherwise malformed.'
-        invalid_redirect_uri: 'The redirect URI included is not valid.'
-        unauthorized_client: 'The client is not authorized to perform this request using this method.'
-        access_denied: 'The resource owner or authorization server denied the request.'
-        invalid_scope: 'The requested scope is invalid, unknown, or malformed.'
-        server_error: 'The authorization server encountered an unexpected condition which prevented it from fulfilling the request.'
-        temporarily_unavailable: 'The authorization server is currently unable to handle the request due to a temporary overloading or maintenance of the server.'
+        invalid_request: '这个请求缺少必要的参数，或者参数值、格式不正确。'
+        invalid_redirect_uri: '无效的登录回调地址。'
+        unauthorized_client: '未授权的应用，请求无法执行。'
+        access_denied: '用户或服务器拒绝了请求。'
+        invalid_scope: '请求范围无效、未知或格式不正确。'
+        server_error: '服务器异常，无法处理请求。'
+        temporarily_unavailable: '服务器维护中，无法处理请求。'
 
         #configuration error messages
         credential_flow_not_configured: 'Resource Owner Password Credentials flow failed due to Doorkeeper.configure.resource_owner_from_credentials being unconfigured.'
         resource_owner_authenticator_not_configured: 'Resource Owner find failed due to Doorkeeper.configure.resource_owner_authenticator being unconfiged.'
 
         # Access grant errors
-        unsupported_response_type: 'The authorization server does not support this response type.'
+        unsupported_response_type: '服务器不支持这种 response type。'
 
         # Access token errors
-        invalid_client: 'Client authentication failed due to unknown client, no client authentication included, or unsupported authentication method.'
-        invalid_grant: 'The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.'
-        unsupported_grant_type: 'The authorization grant type is not supported by the authorization server.'
+        invalid_client: '由于未知、不支持或没有客户端，认证失败。'
+        invalid_grant: '授权方式无效，或者登录回调地址无效、过期或已被撤销。'
+        unsupported_grant_type: '服务器不支持此类型的授权方式。'
 
         # Password Access token errors
-        invalid_resource_owner: 'The provided resource owner credentials are not valid, or resource owner cannot be found'
+        invalid_resource_owner: '资源所有者认证无效或没有所有者。'
 
         invalid_token:
-          revoked: "The access token was revoked"
-          expired: "The access token expired"
-          unknown: "The access token is invalid"
+          revoked: "Access Token 已被注销。"
+          expired: "Access Token 已过期。"
+          unknown: "Access Token 无效。"
     scopes:
       api: Access your API
 
     flash:
       applications:
         create:
-          notice: 'The application was created successfully.'
+          notice: '应用创建成功。'
         destroy:
-          notice: 'The application was deleted successfully.'
+          notice: '应用删除成功。'
         update:
-          notice: 'The application was updated successfully.'
+          notice: '应用修改成功。'
       authorized_applications:
         destroy:
-          notice: 'The application was revoked access.'
+          notice: '已成功注销了应用的认证信息。'

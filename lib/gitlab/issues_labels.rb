@@ -8,14 +8,14 @@ module Gitlab
         green = '#5cb85c'
 
         labels = [
-          { title: "bug", color: red },
-          { title: "critical", color: red },
-          { title: "confirmed", color: red },
-          { title: "documentation", color: yellow },
-          { title: "support", color: yellow },
-          { title: "discussion", color: blue },
-          { title: "suggestion", color: blue },
-          { title: "enhancement", color: green }
+          { title: "缺陷", color: red },
+          { title: "危急", color: red },
+          { title: "已确认", color: red },
+          { title: "文档", color: yellow },
+          { title: "支持", color: yellow },
+          { title: "讨论", color: blue },
+          { title: "建议", color: blue },
+          { title: "增强", color: green }
         ]
 
         labels.each do |params|

@@ -10,13 +10,13 @@
     .text-content
       - if has_button
         %h4
-          The Issue Tracker is a good place to add things that need to be improved or solved in a project!
+          问题跟踪器是添加需要在项目中改进或解决的东西的好地方！
         %p
-          An issue can be a bug, a todo or a feature request that needs to be discussed in a project.
-          Besides, issues are searchable and filterable.
+          问题可能是需要在项目中讨论的错误，待办事项或功能请求。
+          此外，问题是可搜索和可过滤的。
         - if project_select_button
-          = render 'shared/new_project_item_select', path: 'issues/new', label: 'New issue'
+          = render 'shared/new_project_item_select', path: 'issues/new', label: '新问题'
         - else
-          = link_to 'New issue', button_path, class: 'btn btn-new', title: 'New issue', id: 'new_issue_link'
+          = link_to '新问题', button_path, class: 'btn btn-new', title: '新问题', id: 'new_issue_link'
       - else
-        %h4.text-center There are no issues to show.
+        %h4.text-center 没有问题要显示。

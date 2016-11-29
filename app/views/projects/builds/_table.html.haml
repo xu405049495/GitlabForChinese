@@ -2,22 +2,21 @@
 
 - if builds.blank?
   %div
-    .nothing-here-block No builds to show
+    .nothing-here-block 没有构建显示
 - else
   .table-holder
     %table.table.ci-table.builds-page
       %thead
         %tr
-          %th Status
-          %th Build
-          %th Pipeline
+          %th 状态
+          %th 构建
+          %th 管道
           - if admin
-            %th Project
+            %th 项目
             %th Runner
-          %th Stage
-          %th Name
-          %th
-          %th Coverage
+          %th 阶段
+          %th 名称
+          %th 规模
           %th
 
       = render partial: "projects/ci/builds/build", collection: builds, as: :build, locals: { commit_sha: true, ref: true, pipeline_link: true, stage: true, allow_retry: true, coverage: admin || project.build_coverage_enabled?, admin: admin }

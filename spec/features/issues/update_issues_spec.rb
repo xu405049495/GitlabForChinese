@@ -89,7 +89,7 @@ feature 'Multiple issue updating from issues#index', feature: true do
       find('#check_all_issues').click
       find('.issues_bulk_update .js-milestone-select').click
 
-      find('.dropdown-menu-milestone a', text: "No Milestone").click
+      find('.dropdown-menu-milestone a', text: "无里程碑").click
       click_update_issues_button
 
       expect(find('.issue:first-child')).not_to have_content milestone.title

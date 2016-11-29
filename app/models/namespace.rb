@@ -135,7 +135,7 @@ class Namespace < ActiveRecord::Base
   end
 
   def kind
-    type == 'Group' ? 'group' : 'user'
+    type == 'Group' ? '群组' : '用户'
   end
 
   def find_fork_of(project)

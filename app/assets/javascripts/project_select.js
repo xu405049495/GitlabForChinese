@@ -48,9 +48,9 @@
         this.groupId = $(select).data('group-id');
         this.includeGroups = $(select).data('include-groups');
         this.orderBy = $(select).data('order-by') || 'id';
-        placeholder = "Search for project";
+        placeholder = "搜索项目";
         if (this.includeGroups) {
-          placeholder += " or group";
+          placeholder += " 或群组";
         }
         return $(select).select2({
           placeholder: placeholder,

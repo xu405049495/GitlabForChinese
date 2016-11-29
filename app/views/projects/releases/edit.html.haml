@@ -12,7 +12,7 @@
 
   = form_for(@release, method: :put, url: namespace_project_tag_release_path(@project.namespace, @project, @tag.name), html: { class: 'form-horizontal common-note-form release-form js-quick-submit' }) do |f|
     = render layout: 'projects/md_preview', locals: { preview_class: "md-preview", referenced_users: true } do
-      = render 'projects/zen', f: f, attr: :description, classes: 'note-textarea', placeholder: "Write your release notes or drag files here..."
+      = render 'projects/zen', f: f, attr: :description, classes: 'note-textarea', placeholder: "撰写发布备注或拖放文件到此处..."
       = render 'projects/notes/hints'
     .error-alert
     .prepend-top-default

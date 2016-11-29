@@ -22,10 +22,16 @@ module NotificationsHelper
 
   def notification_title(level)
     case level.to_sym
+    when :disabled
+      '关闭'
     when :participating
-      'Participate'
+      '参与'
+    when :watch
+      '关注'
     when :mention
-      'On mention'
+      '被提及'
+    when :global
+      '全局'
     else
       level.to_s.titlecase
     end
@@ -34,17 +40,17 @@ module NotificationsHelper
   def notification_description(level)
     case level.to_sym
     when :participating
-      'You will only receive notifications for threads you have participated in'
+      '您只会收到您参与的活动通知'
     when :mention
-      'You will receive notifications only for comments in which you were @mentioned'
+      '您将只收到@您的评论的通知'
     when :watch
-      'You will receive notifications for any activity'
+      '您将收到任何活动的通知'
     when :disabled
-      'You will not get any notifications via email'
+      '您将不会通过电子邮件收到任何通知'
     when :global
-      'Use your global notification setting'
+      '使用您的全局通知设置'
     when :custom
-      'You will only receive notifications for the events you choose'
+      '您只会收到您自定义的事件的通知'
     end
   end
 

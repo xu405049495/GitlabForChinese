@@ -58,7 +58,7 @@ feature 'Import/Export - project import integration test', feature: true, js: tr
       click_on 'Import project'
 
       page.within('.flash-container') do
-        expect(page).to have_content('Project could not be imported')
+        expect(page).to have_content('不能导入项目')
       end
     end
 
@@ -73,7 +73,7 @@ feature 'Import/Export - project import integration test', feature: true, js: tr
       find(:link, 'GitLab export').trigger('click')
 
       page.within('.flash-container') do
-        expect(page).to have_content('Please enter path and name')
+        expect(page).to have_content('请输入路径和名称')
       end
     end
   end

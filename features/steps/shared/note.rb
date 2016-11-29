@@ -60,7 +60,7 @@ module SharedNote
   step 'The comment preview tab should say there is nothing to do' do
     page.within(".js-main-target-form") do
       find('.js-md-preview-button').click
-      expect(find('.js-md-preview')).to have_content('Nothing to preview.')
+      expect(find('.js-md-preview')).to have_content('没有预览。')
     end
   end
 

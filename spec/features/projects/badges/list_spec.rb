@@ -11,7 +11,7 @@ feature 'list of badges' do
 
   scenario 'user wants to see build status badge' do
     page.within('.build-status') do
-      expect(page).to have_content 'build status'
+      expect(page).to have_content '构建状态'
       expect(page).to have_content 'Markdown'
       expect(page).to have_content 'HTML'
       expect(page).to have_css('.highlight', count: 2)
@@ -25,7 +25,7 @@ feature 'list of badges' do
 
   scenario 'user wants to see coverage report badge' do
     page.within('.coverage-report') do
-      expect(page).to have_content 'coverage report'
+      expect(page).to have_content '覆盖报告'
       expect(page).to have_content 'Markdown'
       expect(page).to have_content 'HTML'
       expect(page).to have_css('.highlight', count: 2)

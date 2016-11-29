@@ -29,13 +29,13 @@ class Projects::CycleAnalyticsController < Projects::ApplicationController
   def generate_cycle_analytics_data
     stats_values = []
 
-    cycle_analytics_view_data = [[:issue, "Issue", "Related Issues", "Time before an issue gets scheduled"],
-                                 [:plan, "Plan", "Related Commits", "Time before an issue starts implementation"],
-                                 [:code, "Code", "Related Merge Requests", "Time spent coding"],
-                                 [:test, "Test", "Relative Builds Trigger by Commits", "The time taken to build and test the application"],
-                                 [:review, "Review", "Relative Merged Requests", "The time taken to review the code"],
-                                 [:staging, "Staging", "Relative Deployed Builds", "The time taken in staging"],
-                                 [:production, "Production", "Related Issues", "The total time taken from idea to production"]]
+    cycle_analytics_view_data = [[:issue, "问题", "问题排定之前的时间"],
+                                 [:plan, "计划", "问题开始实施之前的时间"],
+                                 [:code, "开发", "首次合并请求之前的时间"],
+                                 [:test, "测试", "所有提交/合并的总测试时间"],
+                                 [:review, "评审", "合并请求创建和合并/关闭之间的时间"],
+                                 [:staging, "排期", "从合并请求合并到部署到生产"],
+                                 [:production, "生产", "从问题创建到部署到生产"]]
 
     stats = cycle_analytics_view_data.reduce([]) do |stats, (stage_method, stage_text, stage_legend, stage_description)|
       value = @cycle_analytics.send(stage_method).presence
@@ -57,9 +57,9 @@ class Projects::CycleAnalyticsController < Projects::ApplicationController
     deploys = @cycle_analytics.summary.deploys
 
     summary = [
-      { title: "New Issue".pluralize(issues), value: issues },
-      { title: "Commit".pluralize(commits), value: commits },
-      { title: "Deploy".pluralize(deploys), value: deploys }
+      { title: "新问题", value: issues },
+      { title: "提交", value: commits },
+      { title: "部署", value: deploys }
     ]
 
     cycle_analytics_hash = { summary: summary,
