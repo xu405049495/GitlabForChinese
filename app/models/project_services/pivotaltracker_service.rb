@@ -11,7 +11,7 @@ class PivotaltrackerService < Service
   end
 
   def description
-    'Project Management Software (Source Commits Endpoint)'
+    '项目管理软件（源提交端点）'
   end
 
   def to_param
@@ -23,13 +23,12 @@ class PivotaltrackerService < Service
       {
         type: 'text',
         name: 'token',
-        placeholder: 'Pivotal Tracker API token.'
+        placeholder: 'Pivotal Tracker API令牌。'
       },
       {
         type: 'text',
         name: 'restrict_to_branch',
-        placeholder: 'Comma-separated list of branches which will be ' \
-          'automatically inspected. Leave blank to include all branches.'
+        placeholder: '将自动检查的分支的逗号分隔列表。留为空白以包括所有分支。'
       }
     ]
   end

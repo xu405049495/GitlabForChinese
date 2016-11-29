@@ -54,7 +54,7 @@ class BuildkiteService < CiService
   end
 
   def description
-    'Continuous integration and deployments'
+    '持续集成和部署'
   end
 
   def to_param
@@ -65,7 +65,7 @@ class BuildkiteService < CiService
     [
       { type: 'text',
         name: 'token',
-        placeholder: 'Buildkite project GitLab token' },
+        placeholder: 'Buildkite项目GitLab令牌' },
 
       { type: 'text',
         name: 'project_url',
@@ -73,7 +73,7 @@ class BuildkiteService < CiService
 
       { type: 'checkbox',
         name: 'enable_ssl_verification',
-        title: "Enable SSL verification" }
+        title: "启用 SSL 验证" }
     ]
   end
 

@@ -7,25 +7,25 @@
       = nav_link(controller: :deploy_keys) do
         = link_to admin_deploy_keys_path, title: 'Deploy Keys' do
           %span
-            Deploy Keys
+            部署的钥匙
 
       = nav_link(controller: :services) do
         = link_to admin_application_settings_services_path, title: 'Service Templates' do
           %span
-            Service Templates
+            服务模板
 
       = nav_link(controller: :labels) do
         = link_to admin_labels_path, title: 'Labels' do
           %span
-            Labels
+            标签
 
       = nav_link(controller: :appearances) do
         = link_to admin_appearances_path, title: 'Appearances' do
           %span
-            Appearance
+            外观
 
       %li.divider
       = nav_link(controller: :application_settings) do
         = link_to admin_application_settings_path, title: 'Settings' do
           %span
-            Settings
+            设置

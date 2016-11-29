@@ -63,7 +63,7 @@ module Taskable
                       end
 
     sum = tasks.summary
-    "#{sum.complete_count}#{prep}#{sum.item_count} #{'task'.pluralize(sum.item_count)}#{completed}"
+    "#{sum.complete_count}#{prep}#{sum.item_count} #{sum.item_count}个任务#{completed}个已完成"
   end
 
   # Return a short string that describes the current state of this Taskable's

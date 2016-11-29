@@ -16,7 +16,7 @@ module AvatarsHelper
     avatar = image_tag(
       avatar_icon(options[:user] || options[:user_email], avatar_size),
       class: "avatar has-tooltip s#{avatar_size} #{css_class}",
-      alt: "#{user_name}'s avatar",
+      alt: "#{user_name}的头像",
       title: user_name,
       data: { container: 'body' }
     )

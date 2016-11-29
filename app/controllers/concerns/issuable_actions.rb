@@ -13,7 +13,7 @@ module IssuableActions
     TodoService.new.public_send(destroy_method, issuable, current_user)
 
     name = issuable.human_class_name
-    flash[:notice] = "The #{name} was successfully deleted."
+    flash[:notice] = " #{name} 删除成功。"
     redirect_to polymorphic_path([@project.namespace.becomes(Namespace), @project, issuable.class])
   end
 

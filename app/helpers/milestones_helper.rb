@@ -81,11 +81,12 @@ module MilestonesHelper
 
   def milestone_remaining_days(milestone)
     if milestone.expired?
-      content_tag(:strong, 'Past due')
+      content_tag(:strong, '到期日')
     elsif milestone.due_date
       days    = milestone.remaining_days
-      content = content_tag(:strong, days)
-      content << " #{'day'.pluralize(days)} remaining"
+      content = "剩余 "
+      content << content_tag(:strong, days)
+      content << " 天"
     end
   end
 end

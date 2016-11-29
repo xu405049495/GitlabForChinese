@@ -68,6 +68,15 @@ describe JiraService, models: true do
     end
   end
 
+  describe '#reference_pattern' do
+    it_behaves_like 'allows project key on reference pattern'
+
+    it 'does not allow # on the code' do
+      expect(subject.reference_pattern.match('#123')).to be_nil
+      expect(subject.reference_pattern.match('1#23#12')).to be_nil
+    end
+  end
+
   describe "Execute" do
     let(:custom_base_url) { 'http://custom_url' }
     let(:user)    { create(:user) }

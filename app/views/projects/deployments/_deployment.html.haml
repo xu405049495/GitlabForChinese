@@ -10,7 +10,7 @@
       = link_to [@project.namespace.becomes(Namespace), @project, deployment.deployable], class: 'build-link' do
         = "#{deployment.deployable.name} (##{deployment.deployable.id})"
       - if deployment.user
-        by
+        作者
         = user_avatar(user: deployment.user, size: 20)
 
   %td

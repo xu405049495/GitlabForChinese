@@ -10,16 +10,16 @@
         toggleStar = function(isStarred) {
           $this.parent().find('.star-count').text(data.star_count);
           if (isStarred) {
-            $starSpan.removeClass('starred').text('Star');
+            $starSpan.removeClass('starred').text('星标');
             $starIcon.removeClass('fa-star').addClass('fa-star-o');
           } else {
-            $starSpan.addClass('starred').text('Unstar');
+            $starSpan.addClass('starred').text('取消星标');
             $starIcon.removeClass('fa-star-o').addClass('fa-star');
           }
         };
         toggleStar($starSpan.hasClass('starred'));
       }).on('ajax:error', function(e, xhr, status, error) {
-        new Flash('Star toggle failed. Try again later.', 'alert');
+        new Flash('星标切换失败。稍后再试。', 'alert');
       });
     }
 

@@ -9,7 +9,7 @@ class FlowdockService < Service
   end
 
   def description
-    'Flowdock is a collaboration web app for technical teams.'
+    'Flowdock 是一个用于技术团队的协作Web应用程序。'
   end
 
   def to_param
@@ -18,7 +18,7 @@ class FlowdockService < Service
 
   def fields
     [
-      { type: 'text', name: 'token', placeholder: 'Flowdock Git source token' }
+      { type: 'text', name: 'token', placeholder: 'Flowdock Git源令牌' }
     ]
   end
 

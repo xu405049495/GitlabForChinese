@@ -144,7 +144,7 @@ module LabelsHelper
     return 'project-level' if label.subscribed?(current_user, project)
     return 'group-level' if label.subscribed?(current_user)
 
-    'unsubscribed'
+    '取消订阅'
   end
 
   def group_label_unsubscribe_path(label, project)
@@ -155,13 +155,13 @@ module LabelsHelper
   end
 
   def label_subscription_toggle_button_text(label, project)
-    label.subscribed?(current_user, project) ? 'Unsubscribe' : 'Subscribe'
+    label.subscribed?(current_user, project) ? '取消订阅' : '订阅'
   end
 
   def label_deletion_confirm_text(label)
     case label
-    when GroupLabel then 'Remove this label? This will affect all projects within the group. Are you sure?'
-    when ProjectLabel then 'Remove this label? Are you sure?'
+    when GroupLabel then '要移除此标记吗？这将影响组内的所有项目。您确定？'
+    when ProjectLabel then '要移除此标记吗？您确定？'
     end
   end
 

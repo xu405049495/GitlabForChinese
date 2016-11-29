@@ -330,7 +330,7 @@ module Ci
     def dir_to_trace
       File.join(
         Settings.gitlab_ci.builds_path,
-        created_at.utc.strftime("%Y_%m"),
+        created_at.utc.strftime("%Y年%m月"),
         project.id.to_s
       )
     end
@@ -348,7 +348,7 @@ module Ci
     def old_dir_to_trace
       File.join(
         Settings.gitlab_ci.builds_path,
-        created_at.utc.strftime("%Y_%m"),
+        created_at.utc.strftime("%Y年%m月"),
         project.ci_id.to_s
       )
     end
@@ -374,7 +374,7 @@ module Ci
     # This method returns old path to artifacts only if it already exists.
     #
     def artifacts_path
-      old = File.join(created_at.utc.strftime('%Y_%m'),
+      old = File.join(created_at.utc.strftime('%Y年%m月'),
                       project.ci_id.to_s,
                       id.to_s)
 
@@ -382,7 +382,7 @@ module Ci
       return old if project.ci_id && File.directory?(old_store)
 
       File.join(
-        created_at.utc.strftime('%Y_%m'),
+        created_at.utc.strftime('%Y年%m月'),
         project.id.to_s,
         id.to_s
       )

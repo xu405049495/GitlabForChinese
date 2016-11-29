@@ -18,10 +18,10 @@ describe 'Admin Builds' do
 
           visit admin_builds_path
 
-          expect(page).to have_selector('.nav-links li.active', text: 'All')
-          expect(page).to have_selector('.row-content-block', text: 'All builds')
+          expect(page).to have_selector('.nav-links li.active', text: '所有')
+          expect(page).to have_selector('.row-content-block', text: '所有构建')
           expect(page.all('.build-link').size).to eq(4)
-          expect(page).to have_link 'Cancel all'
+          expect(page).to have_link '全部取消'
         end
       end
 
@@ -29,9 +29,9 @@ describe 'Admin Builds' do
         it 'shows a message' do
           visit admin_builds_path
 
-          expect(page).to have_selector('.nav-links li.active', text: 'All')
-          expect(page).to have_content 'No builds to show'
-          expect(page).not_to have_link 'Cancel all'
+          expect(page).to have_selector('.nav-links li.active', text: '所有')
+          expect(page).to have_content '没有构建显示'
+          expect(page).not_to have_link '全部取消'
         end
       end
     end
@@ -46,12 +46,12 @@ describe 'Admin Builds' do
 
           visit admin_builds_path(scope: :pending)
 
-          expect(page).to have_selector('.nav-links li.active', text: 'Pending')
+          expect(page).to have_selector('.nav-links li.active', text: '待定')
           expect(page.find('.build-link')).to have_content(build1.id)
           expect(page.find('.build-link')).not_to have_content(build2.id)
           expect(page.find('.build-link')).not_to have_content(build3.id)
           expect(page.find('.build-link')).not_to have_content(build4.id)
-          expect(page).to have_link 'Cancel all'
+          expect(page).to have_link '全部取消'
         end
       end
 
@@ -61,9 +61,9 @@ describe 'Admin Builds' do
 
           visit admin_builds_path(scope: :pending)
 
-          expect(page).to have_selector('.nav-links li.active', text: 'Pending')
-          expect(page).to have_content 'No builds to show'
-          expect(page).not_to have_link 'Cancel all'
+          expect(page).to have_selector('.nav-links li.active', text: '待定')
+          expect(page).to have_content '没有构建显示'
+          expect(page).not_to have_link '全部取消'
         end
       end
     end
@@ -78,12 +78,12 @@ describe 'Admin Builds' do
 
           visit admin_builds_path(scope: :running)
 
-          expect(page).to have_selector('.nav-links li.active', text: 'Running')
+          expect(page).to have_selector('.nav-links li.active', text: '运行')
           expect(page.find('.build-link')).to have_content(build1.id)
           expect(page.find('.build-link')).not_to have_content(build2.id)
           expect(page.find('.build-link')).not_to have_content(build3.id)
           expect(page.find('.build-link')).not_to have_content(build4.id)
-          expect(page).to have_link 'Cancel all'
+          expect(page).to have_link '全部取消'
         end
       end
 
@@ -93,9 +93,9 @@ describe 'Admin Builds' do
 
           visit admin_builds_path(scope: :running)
 
-          expect(page).to have_selector('.nav-links li.active', text: 'Running')
-          expect(page).to have_content 'No builds to show'
-          expect(page).not_to have_link 'Cancel all'
+          expect(page).to have_selector('.nav-links li.active', text: '运行')
+          expect(page).to have_content '没有构建显示'
+          expect(page).not_to have_link '全部取消'
         end
       end
     end
@@ -109,11 +109,11 @@ describe 'Admin Builds' do
 
           visit admin_builds_path(scope: :finished)
 
-          expect(page).to have_selector('.nav-links li.active', text: 'Finished')
+          expect(page).to have_selector('.nav-links li.active', text: '完成')
           expect(page.find('.build-link')).not_to have_content(build1.id)
           expect(page.find('.build-link')).not_to have_content(build2.id)
           expect(page.find('.build-link')).to have_content(build3.id)
-          expect(page).to have_link 'Cancel all'
+          expect(page).to have_link '全部取消'
         end
       end
 
@@ -123,9 +123,9 @@ describe 'Admin Builds' do
 
           visit admin_builds_path(scope: :finished)
 
-          expect(page).to have_selector('.nav-links li.active', text: 'Finished')
-          expect(page).to have_content 'No builds to show'
-          expect(page).to have_link 'Cancel all'
+          expect(page).to have_selector('.nav-links li.active', text: '完成')
+          expect(page).to have_content '没有构建显示'
+          expect(page).to have_link '全部取消'
         end
       end
     end

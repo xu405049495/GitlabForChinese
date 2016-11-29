@@ -9,11 +9,11 @@
   .project-home-empty{ class: [('row-content-block' if can_create_wiki), ('content-block' unless can_create_wiki)] }
     %div.text-center{ class: container_class }
       %h4
-        This project does not have a wiki homepage yet
+        这个项目没有wiki主页
       - if can_create_wiki
         %p
-          Add a homepage to your wiki that contains information about your project
+          添加一个主页到您的wiki，其中包含有关您的项目的信息
         %p
-          We recommend you
-          = link_to "add a homepage", namespace_project_wiki_path(@project.namespace, @project, :home)
-          to your project's wiki and GitLab will show it here instead of this message.
+          我们建议您向项目的wiki
+          = link_to "添加首页，", namespace_project_wiki_path(@project.namespace, @project, :home)
+          GitLab将在此显示它，而不是此消息。

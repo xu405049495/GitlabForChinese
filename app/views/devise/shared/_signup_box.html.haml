@@ -5,27 +5,27 @@
         = devise_error_messages!
       %div.form-group
         = f.label :name
-        = f.text_field :name, class: "form-control top", required: true, title: "This field is required."
+        = f.text_field :name, class: "form-control top", required: true, title: "这是必填项。"
       %div.username.form-group
         = f.label :username
-        = f.text_field :username, class: "form-control middle", pattern: Gitlab::Regex::NAMESPACE_REGEX_STR_SIMPLE, required: true, title: 'Please create a username with only alphanumeric characters.'
+        = f.text_field :username, class: "form-control middle", pattern: Gitlab::Regex::NAMESPACE_REGEX_STR_SIMPLE, required: true, title: '请创建一个仅包含字母数字字符的用户名。'
         %p.validation-error.hide Username is already taken.
         %p.validation-success.hide Username is available.
         %p.validation-pending.hide Checking username availability...
       %div.form-group
         = f.label :email
-        = f.email_field :email, class: "form-control middle", required: true, title: "Please provide a valid email address."
+        = f.email_field :email, class: "form-control middle", required: true, title: "请提供有效的电子邮件地址。"
       .form-group.append-bottom-20#password-strength
         = f.label :password
-        = f.password_field :password, class: "form-control bottom", required: true, pattern: ".{#{@minimum_password_length},}", title: "Minimum length is #{@minimum_password_length} characters."
+        = f.password_field :password, class: "form-control bottom", required: true, pattern: ".{#{@minimum_password_length},}", title: "最小长度为 #{@minimum_password_length} 个字符。"
         %p.gl-field-hint Minimum length is #{@minimum_password_length} characters
       %div
       - if current_application_settings.recaptcha_enabled
         = recaptcha_tags
       %div
-        = f.submit "Register", class: "btn-register btn"
+        = f.submit "注册", class: "btn-register btn"
 .clearfix.submit-container
   %p
-    %span.light Didn't receive a confirmation email?
+    %span.light 没有收到确认邮件？
     = succeed '.' do
-      = link_to "Request a new one", new_confirmation_path(resource_name)
+      = link_to "重新发送", new_confirmation_path(resource_name)

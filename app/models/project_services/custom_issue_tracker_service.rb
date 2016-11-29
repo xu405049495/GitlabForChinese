@@ -7,7 +7,7 @@ class CustomIssueTrackerService < IssueTrackerService
     if self.properties && self.properties['title'].present?
       self.properties['title']
     else
-      'Custom Issue Tracker'
+      '自定义问题跟踪器'
     end
   end
 
@@ -19,7 +19,7 @@ class CustomIssueTrackerService < IssueTrackerService
     if self.properties && self.properties['description'].present?
       self.properties['description']
     else
-      'Custom issue tracker'
+      '自定义问题跟踪器'
     end
   end
 
@@ -31,9 +31,9 @@ class CustomIssueTrackerService < IssueTrackerService
     [
       { type: 'text', name: 'title', placeholder: title },
       { type: 'text', name: 'description', placeholder: description },
-      { type: 'text', name: 'project_url', placeholder: 'Project url' },
-      { type: 'text', name: 'issues_url', placeholder: 'Issue url' },
-      { type: 'text', name: 'new_issue_url', placeholder: 'New Issue url' }
+      { type: 'text', name: 'project_url', placeholder: '项目 url' },
+      { type: 'text', name: 'issues_url', placeholder: '问题 url' },
+      { type: 'text', name: 'new_issue_url', placeholder: '新问题 url' }
     ]
   end
 end

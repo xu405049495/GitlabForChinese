@@ -6,7 +6,7 @@ class ProjectsController < Projects::ApplicationController
   before_action :project, except: [:index, :new, :create]
   before_action :repository, except: [:index, :new, :create]
   before_action :assign_ref_vars, only: [:show], if: :repo_exists?
-  before_action :tree, only: [:show], if: [:repo_exists?, :project_view_files?]
+  before_action :assign_tree_vars, only: [:show], if: [:repo_exists?, :project_view_files?]
 
   # Authorize
   before_action :authorize_admin_project!, only: [:edit, :update, :housekeeping, :download_export, :export, :remove_export, :generate_new_export]
@@ -34,7 +34,7 @@ class ProjectsController < Projects::ApplicationController
 
       redirect_to(
         project_path(@project),
-        notice: "Project '#{@project.name}' was successfully created."
+        notice: "项目 '#{@project.name}' 创建成功。"
       )
     else
       render 'new'
@@ -49,11 +49,11 @@ class ProjectsController < Projects::ApplicationController
 
     respond_to do |format|
       if status
-        flash[:notice] = "Project '#{@project.name}' was successfully updated."
+        flash[:notice] = "项目 '#{@project.name}' 更新成功。"
         format.html do
           redirect_to(
             edit_project_path(@project),
-            notice: "Project '#{@project.name}' was successfully updated."
+            notice: "项目 '#{@project.name}' 更新成功。"
           )
         end
       else
@@ -79,7 +79,7 @@ class ProjectsController < Projects::ApplicationController
     return access_denied! unless can?(current_user, :remove_fork_project, @project)
 
     if ::Projects::UnlinkForkService.new(@project, current_user).execute
-      flash[:notice] = 'The fork relationship has been removed.'
+      flash[:notice] = '派生关系被删除。'
     end
   end
 
@@ -100,7 +100,7 @@ class ProjectsController < Projects::ApplicationController
     end
 
     if @project.pending_delete?
-      flash[:alert] = "Project #{@project.name} queued for deletion."
+      flash[:alert] = "项目 #{@project.name} 正在排队删除。"
     end
 
     respond_to do |format|
@@ -120,7 +120,7 @@ class ProjectsController < Projects::ApplicationController
     return access_denied! unless can?(current_user, :remove_project, @project)
 
     ::Projects::DestroyService.new(@project, current_user, {}).async_execute
-    flash[:alert] = "Project '#{@project.name}' will be deleted."
+    flash[:alert] = "项目 '#{@project.name}' 已被删除。"
 
     redirect_to dashboard_projects_path
   rescue Projects::DestroyService::DestroyError => ex
@@ -192,7 +192,7 @@ class ProjectsController < Projects::ApplicationController
 
     redirect_to(
       project_path(@project),
-      notice: "Housekeeping successfully started"
+      notice: "维护已开启成功"
     )
   rescue ::Projects::HousekeepingService::LeaseTaken => ex
     redirect_to(
@@ -388,5 +388,12 @@ class ProjectsController < Projects::ApplicationController
   # Override get_id from ExtractsPath in this case is just the root of the default branch.
   def get_id
     project.repository.root_ref
+  end
+
+  # ExtractsPath will set @id = project.path on the show route, but it has to be the
+  # branch name for the tree view to work correctly.
+  def assign_tree_vars
+    @id = get_id
+    tree
   end
 end

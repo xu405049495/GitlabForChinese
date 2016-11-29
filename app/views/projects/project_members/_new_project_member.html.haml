@@ -3,20 +3,20 @@
     .col-md-4.col-lg-6
       = users_select_tag(:user_ids, multiple: true, class: "input-clamp", scope: :all, email_user: true)
       .help-block.append-bottom-10
-        Search for users by name, username, or email, or invite new ones using their email address.
+        按名称，用户名或电子邮件搜索用户，或使用电子邮件地址邀请新用户。
 
     .col-md-3.col-lg-2
       = select_tag :access_level, options_for_select(ProjectMember.access_level_roles, @project_member.access_level), class: "form-control project-access-select"
       .help-block.append-bottom-10
-        = link_to "Read more", help_page_path("user/permissions"), class: "vlink"
-        about role permissions
+        = link_to "阅读更多", help_page_path("user/permissions"), class: "vlink"
+        关于角色权限
 
     .col-md-3.col-lg-2
       .clearable-input
-        = text_field_tag :expires_at, nil, class: 'form-control js-access-expiration-date', placeholder: 'Expiration date'
+        = text_field_tag :expires_at, nil, class: 'form-control js-access-expiration-date', placeholder: '失效日期'
         %i.clear-icon.js-clear-input
       .help-block.append-bottom-10
-        On this date, the user(s) will automatically lose access to this project.
+        在此日期，用户将自动失去对此项目的访问权限。
 
     .col-md-2
-      = f.submit "Add to project", class: "btn btn-create btn-block"
+      = f.submit "增加用户到项目", class: "btn btn-create btn-block"

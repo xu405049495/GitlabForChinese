@@ -286,7 +286,7 @@ class Commit
   end
 
   def change_type_title
-    merged_merge_request ? 'merge request' : 'commit'
+    merged_merge_request ? '合并请求' : '提交'
   end
 
   # Get the URI type of the given path

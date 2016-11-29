@@ -171,7 +171,7 @@ class NotificationService
     return true unless note.noteable_type.present?
 
     # ignore gitlab service messages
-    return true if note.note.start_with?('Status changed to closed')
+    return true if note.note.start_with?('状态已更改为已关闭')
     return true if note.cross_reference? && note.system?
 
     target = note.noteable

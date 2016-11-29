@@ -43,10 +43,10 @@
           state = $(this).data("state");
           if ("enabled" === state) {
             $(this).data("state", "disabled");
-            return $(this).text("Enable autoscroll");
+            return $(this).text("启用自动滚动");
           } else {
             $(this).data("state", "enabled");
-            return $(this).text("Disable autoscroll");
+            return $(this).text("禁用自动滚动");
           }
         });
         Build.interval = setInterval((function(_this) {

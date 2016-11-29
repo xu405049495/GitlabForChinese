@@ -31,11 +31,11 @@ class BambooService < CiService
   end
 
   def description
-    'A continuous integration and build server'
+    '持续集成和构建服务器'
   end
 
   def help
-    'You must set up automatic revision labeling and a repository trigger in Bamboo.'
+    '您必须在Bamboo中设置自动修订标签和存储库触发器。'
   end
 
   def to_param
@@ -45,11 +45,11 @@ class BambooService < CiService
   def fields
     [
         { type: 'text', name: 'bamboo_url',
-          placeholder: 'Bamboo root URL like https://bamboo.example.com' },
+          placeholder: 'Bamboo 网址，例如https://bamboo.example.com' },
         { type: 'text', name: 'build_key',
-          placeholder: 'Bamboo build plan key like KEY' },
+          placeholder: 'Bamboo 构建计划键，例如KEY' },
         { type: 'text', name: 'username',
-          placeholder: 'A user with API access, if applicable' },
+          placeholder: '具有API访问权限的用户（如果适用）' },
         { type: 'password', name: 'password' },
     ]
   end

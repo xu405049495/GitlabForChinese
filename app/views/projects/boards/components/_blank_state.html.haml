@@ -2,14 +2,14 @@
   "v-if" => 'list.id == "blank"' }
   .board-blank-state
     %p
-      Add the following default lists to your Issue Board with one click:
+      通过一次点击将以下默认列表添加到您的问题面板板：
     %ul.board-blank-state-list
       %li{ "v-for" => "label in predefinedLabels" }
         %span.label-color{ ":style" =>  "{ backgroundColor: label.color } " }
         {{ label.title }}
     %p
-      Starting out with the default set of lists will get you right on the way to making the most of your board.
+      开始使用默认的列表将让你在正确的方式来充分利用你的面板。
     %button.btn.btn-create.btn-inverted.btn-block{ type: "button", "@click.stop" => "addDefaultLists" }
-      Add default lists
+      添加默认列表
     %button.btn.btn-default.btn-block{ type: "button", "@click.stop" => "clearBlankState" }
-      Nevermind, I'll use my own
+      忽略，我会用我自己的标记

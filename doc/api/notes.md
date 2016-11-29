@@ -21,7 +21,7 @@ Parameters:
 [
   {
     "id": 302,
-    "body": "Status changed to closed",
+    "body": "状态已更改为已关闭",
     "attachment": null,
     "author": {
       "id": 1,

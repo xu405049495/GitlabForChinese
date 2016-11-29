@@ -5,37 +5,37 @@
     describe('get day name', () => {
       it('should return Sunday', () => {
         const day = gl.utils.getDayName(new Date('07/17/2016'));
-        expect(day).toBe('Sunday');
+        expect(day).toBe('星期日');
       });
 
       it('should return Monday', () => {
         const day = gl.utils.getDayName(new Date('07/18/2016'));
-        expect(day).toBe('Monday');
+        expect(day).toBe('星期一');
       });
 
       it('should return Tuesday', () => {
         const day = gl.utils.getDayName(new Date('07/19/2016'));
-        expect(day).toBe('Tuesday');
+        expect(day).toBe('星期二');
       });
 
       it('should return Wednesday', () => {
         const day = gl.utils.getDayName(new Date('07/20/2016'));
-        expect(day).toBe('Wednesday');
+        expect(day).toBe('星期三');
       });
 
       it('should return Thursday', () => {
         const day = gl.utils.getDayName(new Date('07/21/2016'));
-        expect(day).toBe('Thursday');
+        expect(day).toBe('星期四');
       });
 
       it('should return Friday', () => {
         const day = gl.utils.getDayName(new Date('07/22/2016'));
-        expect(day).toBe('Friday');
+        expect(day).toBe('星期五');
       });
 
       it('should return Saturday', () => {
         const day = gl.utils.getDayName(new Date('07/23/2016'));
-        expect(day).toBe('Saturday');
+        expect(day).toBe('星期六');
       });
     });
 

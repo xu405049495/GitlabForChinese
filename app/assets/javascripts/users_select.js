@@ -89,7 +89,7 @@
                 };
               } else {
                 user = {
-                  name: 'Unassigned',
+                  name: '未指派',
                   username: '',
                   avatar: ''
                 };
@@ -125,7 +125,7 @@
                     showDivider += 1;
                     users.unshift({
                       beforeDivider: true,
-                      name: 'Unassigned',
+                      name: '未指派',
                       id: 0
                     });
                   }
@@ -133,7 +133,7 @@
                     showDivider += 1;
                     name = showAnyUser;
                     if (name === true) {
-                      name = 'Any User';
+                      name = '任何用户';
                     }
                     anyUser = {
                       beforeDivider: true,
@@ -261,7 +261,7 @@
           showEmailUser = $(select).data('email-user');
           firstUser = $(select).data('first-user');
           return $(select).select2({
-            placeholder: "Search for a user",
+            placeholder: "搜索用户",
             multiple: $(select).hasClass('multiselect'),
             minimumInputLength: 0,
             query: function(query) {
@@ -285,7 +285,7 @@
                   }
                   if (showNullUser) {
                     nullUser = {
-                      name: 'Unassigned',
+                      name: '未指派',
                       id: 0
                     };
                     data.results.unshift(nullUser);
@@ -293,7 +293,7 @@
                   if (showAnyUser) {
                     name = showAnyUser;
                     if (name === true) {
-                      name = 'Any User';
+                      name = '任何用户';
                     }
                     anyUser = {
                       name: name,
@@ -305,7 +305,7 @@
                 if (showEmailUser && data.results.length === 0 && query.term.match(/^[^@]+@[^@]+$/)) {
                   var trimmed = query.term.trim();
                   emailUser = {
-                    name: "Invite \"" + query.term + "\"",
+                    name: "邀请 \"" + query.term + "\"",
                     username: trimmed,
                     id: trimmed
                   };
@@ -344,7 +344,7 @@
       id = $(element).val();
       if (id === "0") {
         nullUser = {
-          name: 'Unassigned'
+          name: '未指派'
         };
         return callback(nullUser);
       } else if (id !== "") {

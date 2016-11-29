@@ -1,6 +1,6 @@
 .page-content-header
   .header-main-content
-    %strong Commit
+    %strong 提交
     %strong.monospace.js-details-short= @commit.short_id
     = link_to("#", class: "js-details-expand hidden-xs hidden-sm") do
       %span.text-expander
@@ -10,12 +10,12 @@
     = clipboard_button(clipboard_text: @commit.id)
     %span.hidden-xs authored
     #{time_ago_with_tooltip(@commit.authored_date)}
-    %span by
+    %span 作者：
     = author_avatar(@commit, size: 24)
     %strong
       = commit_author_link(@commit, avatar: true, size: 24)
     - if @commit.different_committer?
-      %span.light Committed by
+      %span.light 提交者：
       %strong
         = commit_committer_link(@commit, avatar: true, size: 24)
       #{time_ago_with_tooltip(@commit.committed_date)}
@@ -26,15 +26,15 @@
         = icon('comment')
         = @notes_count
     = link_to namespace_project_tree_path(@project.namespace, @project, @commit), class: "btn btn-default append-right-10 hidden-xs hidden-sm" do
-      Browse Files
+      浏览文件
     .dropdown.inline
       %a.btn.btn-default.dropdown-toggle{ data: { toggle: "dropdown" } }
-        %span Options
+        %span 操作
         = icon('caret-down')
       %ul.dropdown-menu.dropdown-menu-align-right
         %li.visible-xs-block.visible-sm-block
           = link_to namespace_project_tree_path(@project.namespace, @project, @commit) do
-            Browse Files
+            浏览文件
         - unless @commit.has_been_reverted?(current_user)
           %li.clearfix
             = revert_commit_link(@commit, namespace_project_commit_path(@project.namespace, @project, @commit.id), has_tooltip: false)
@@ -44,10 +44,10 @@
           = link_to "Tag", new_namespace_project_tag_path(@project.namespace, @project, ref: @commit)
         %li.divider
         %li.dropdown-header
-          Download
+          下载为
         - unless @commit.parents.length > 1
-          %li= link_to "Email Patches", namespace_project_commit_path(@project.namespace, @project, @commit, format: :patch)
-        %li= link_to "Plain Diff",    namespace_project_commit_path(@project.namespace, @project, @commit, format: :diff)
+          %li= link_to "邮件补丁", namespace_project_commit_path(@project.namespace, @project, @commit, format: :patch)
+        %li= link_to "差异文件",    namespace_project_commit_path(@project.namespace, @project, @commit, format: :diff)
 
 .commit-box
   %h3.commit-title
@@ -70,13 +70,13 @@
     .well-segment.pipeline-info
       .icon-container
         = ci_icon_for_status(@commit.status)
-      Pipeline
+      管道
       = link_to "##{@commit.pipelines.last.id}", pipelines_namespace_project_commit_path(@project.namespace, @project, @commit.id), class: "monospace"
-      for
+      的构建
       = link_to @commit.short_id, namespace_project_commit_path(@project.namespace, @project, @commit), class: "monospace"
       %span.ci-status-label
         = ci_label_for_status(@commit.status)
-      in
+      共耗费
       = time_interval_in_words @commit.pipelines.total_duration
 
 :javascript

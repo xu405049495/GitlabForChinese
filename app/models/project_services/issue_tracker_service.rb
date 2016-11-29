@@ -30,9 +30,9 @@ class IssueTrackerService < Service
   def fields
     [
       { type: 'text', name: 'description', placeholder: description },
-      { type: 'text', name: 'project_url', placeholder: 'Project url' },
-      { type: 'text', name: 'issues_url', placeholder: 'Issue url' },
-      { type: 'text', name: 'new_issue_url', placeholder: 'New Issue url' }
+      { type: 'text', name: 'project_url', placeholder: '项目 url' },
+      { type: 'text', name: 'issues_url', placeholder: '问题 url' },
+      { type: 'text', name: 'new_issue_url', placeholder: '新问题 url' }
     ]
   end
 
@@ -64,18 +64,18 @@ class IssueTrackerService < Service
   def execute(data)
     return unless supported_events.include?(data[:object_kind])
 
-    message = "#{self.type} was unable to reach #{self.project_url}. Check the url and try again."
+    message = "#{self.type} 无法访问 #{self.project_url}。请检查连接后重试。"
     result = false
 
     begin
       response = HTTParty.head(self.project_url, verify: true)
 
       if response
-        message = "#{self.type} received response #{response.code} when attempting to connect to #{self.project_url}"
+        message = "#{self.type} 尝试连接 #{self.project_url} 收到响应 #{response.code} "
         result = true
       end
     rescue HTTParty::Error, Timeout::Error, SocketError, Errno::ECONNRESET, Errno::ECONNREFUSED => error
-      message = "#{self.type} had an error when trying to connect to #{self.project_url}: #{error.message}"
+      message = "#{self.type} 尝试连接 #{self.project_url} 发生错误 #{error.message}"
     end
     Rails.logger.info(message)
     result

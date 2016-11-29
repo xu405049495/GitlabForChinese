@@ -12,11 +12,11 @@ class BuildsEmailService < Service
   end
 
   def title
-    'Builds emails'
+    '构建邮件'
   end
 
   def description
-    'Email the builds status to a list of recipients.'
+    '将构建状态通过电子邮件发送给收件人列表。'
   end
 
   def to_param
@@ -47,7 +47,7 @@ class BuildsEmailService < Service
   end
 
   def disabled_title
-    "Please setup a build on your repository."
+    "请在您的存储库上设置一个构建。"
   end
 
   def test_data(project = nil, user = nil)
@@ -56,8 +56,8 @@ class BuildsEmailService < Service
 
   def fields
     [
-      { type: 'textarea', name: 'recipients', placeholder: 'Emails separated by comma' },
-      { type: 'checkbox', name: 'add_pusher', label: 'Add pusher to recipients list' },
+      { type: 'textarea', name: 'recipients', placeholder: '电子邮件以逗号分隔' },
+      { type: 'checkbox', name: 'add_pusher', label: '将推送器添加到收件人列表' },
       { type: 'checkbox', name: 'notify_only_broken_builds' },
     ]
   end

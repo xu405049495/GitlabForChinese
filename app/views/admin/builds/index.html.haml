@@ -9,10 +9,11 @@
 
     .nav-controls
       - if @all_builds.running_or_pending.any?
-        = link_to 'Cancel all', cancel_all_admin_builds_path, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', method: :post
+        = link_to '取消所有', cancel_all_admin_builds_path, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', method: :post
 
   .row-content-block.second-block
-    #{(@scope || 'all').capitalize} builds
+    #{(@scope || '所有').capitalize} 的构建
 
   %ul.content-list.builds-content-list.admin-builds-table
     = render "projects/builds/table", builds: @builds, admin: true
+

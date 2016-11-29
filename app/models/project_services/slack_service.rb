@@ -19,7 +19,7 @@ class SlackService < Service
   end
 
   def description
-    'A team communication tool for the 21st century'
+    '21世纪的团队沟通工具'
   end
 
   def to_param
@@ -27,16 +27,14 @@ class SlackService < Service
   end
 
   def help
-    'This service sends notifications to your Slack channel.<br/>
-    To setup this Service you need to create a new <b>"Incoming webhook"</b> in your Slack integration panel,
-    and enter the Webhook URL below.'
+    '此服务会向您的Slack频道发送通知。<br/>要设置此服务，您需要在Slack集成面板中创建一个新的<b>“接收Webhook”</b>，然后在下面输入Web钩子 URL。'
   end
 
   def fields
     default_fields =
       [
         { type: 'text', name: 'webhook',   placeholder: 'https://hooks.slack.com/services/...' },
-        { type: 'text', name: 'username', placeholder: 'username' },
+        { type: 'text', name: 'username', placeholder: '用户名' },
         { type: 'text', name: 'channel', placeholder: "#general" },
         { type: 'checkbox', name: 'notify_only_broken_builds' },
         { type: 'checkbox', name: 'notify_only_broken_pipelines' },

@@ -3,17 +3,17 @@
 .row.prepend-top-default
   .col-lg-3
     %h4.prepend-top-0
-      Fork project
+      派生项目
     %p
-      A fork is a copy of a project.
+      派生一个项目的副本
       %br
-      Forking a repository allows you to make changes without affecting the original project.
+      派生一个库可以让您在不影响原项目的前提下提交变更。
   .col-lg-9
     .fork-namespaces
       - if @namespaces.present?
         %label.label-light
           %span
-            Click to fork the project to a user or group
+            点击派生项目到用户或群组
           - @namespaces.in_groups_of(6, false) do |group|
             .row
               - group.each do |namespace|
@@ -41,14 +41,14 @@
       - else
         %label.label-light
           %span
-            No available namespaces to fork the project.
+            没有可用的命名空间来派生项目
             %br
             %small
-              You must have permission to create a project in a namespace before forking.
+              在派生之前，您必须拥有在命名空间中创建项目的权限。
 
     .save-project-loader.hide
       .center
         %h2
           %i.fa.fa-spinner.fa-spin
-          Forking repository
-        %p Please wait a moment, this page will automatically refresh when ready.
+          正在派生仓库
+        %p 请稍后，本页面将在准备好后自动刷新。

@@ -8,12 +8,11 @@ class IrkerService < Service
   before_validation :get_channels
 
   def title
-    'Irker (IRC gateway)'
+    'Irker (IRC 网关)'
   end
 
   def description
-    'Send IRC messages, on update, to a list of recipients through an Irker '\
-    'gateway.'
+    '在更新时，通过Irker网关将IRC邮件发送到收件人列表。'
   end
 
   def to_param
@@ -40,31 +39,21 @@ class IrkerService < Service
   def fields
     [
       { type: 'text', name: 'server_host', placeholder: 'localhost',
-        help: 'Irker daemon hostname (defaults to localhost)' },
+        help: 'Irker守护程序主机名（默认为localhost）' },
       { type: 'text', name: 'server_port', placeholder: 6659,
-        help: 'Irker daemon port (defaults to 6659)' },
-      { type: 'text', name: 'default_irc_uri', title: 'Default IRC URI',
-        help: 'A default IRC URI to prepend before each recipient (optional)',
+        help: 'Irker守护程序端口（默认为6659）' },
+      { type: 'text', name: 'default_irc_uri', title: '默认 IRC URI',
+        help: '在每个收件人之前添加的默认IRC URI（可选）',
         placeholder: 'irc://irc.network.net:6697/' },
       { type: 'textarea', name: 'recipients',
-        placeholder: 'Recipients/channels separated by whitespaces',
-        help: 'Recipients have to be specified with a full URI: '\
-        'irc[s]://irc.network.net[:port]/#channel. Special cases: if '\
-        'you want the channel to be a nickname instead, append ",isnick" to ' \
-        'the channel name; if the channel is protected by a secret password, ' \
-        ' append "?key=secretpassword" to the URI (Note that due to a bug, if you ' \
-        ' want to use a password, you have to omit the "#" on the channel). If you ' \
-        ' specify a default IRC URI to prepend before each recipient, you can just ' \
-        ' give a channel name.'  },
+        placeholder: '由空格分隔的收件人/频道',
+        help: '收件人必须使用完整的URI指定：irc [s]：//irc.network.net [：port] /＃channel。特殊情况：如果您希望频道成为昵称，请将“，isnick”附加到频道名称;如果通道受到保密密码保护，请将“？key = secretpassword”附加到URI（注意，由于错误，如果要使用密码，则必须忽略通道上的“＃”）。如果您指定一个默认IRC URI以在每个收件人之前进行预付，您只需给出一个频道名称。'  },
       { type: 'checkbox', name: 'colorize_messages' },
     ]
   end
 
   def help
-    ' NOTE: Irker does NOT have built-in authentication, which makes it' \
-    ' vulnerable to spamming IRC channels if it is hosted outside of a ' \
-    ' firewall. Please make sure you run the daemon within a secured network ' \
-    ' to prevent abuse. For more details, read: http://www.catb.org/~esr/irker/security.html.'
+    ' 注意：Irker没有内置的身份验证，这使得它容易被垃圾邮件IRC通道，如果它托管在防火墙之外。请确保您在安全网络中运行守护程序以防止滥用。有关更多详细信息，请参阅：http：//www.catb.org/~esr/irker/security.html。'
   end
 
   private

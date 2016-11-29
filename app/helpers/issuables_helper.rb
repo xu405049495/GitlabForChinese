@@ -54,7 +54,7 @@ module IssuablesHelper
 
   def user_dropdown_label(user_id, default_label)
     return default_label if user_id.nil?
-    return "Unassigned" if user_id == "0"
+    return "未指派" if user_id == "0"
 
     user = User.find_by(id: user_id)
 
@@ -67,7 +67,7 @@ module IssuablesHelper
 
   def project_dropdown_label(project_id, default_label)
     return default_label if project_id.nil?
-    return "Any project" if project_id == "0"
+    return "任何项目" if project_id == "0"
 
     project = Project.find_by(id: project_id)
 
@@ -78,7 +78,7 @@ module IssuablesHelper
     end
   end
 
-  def milestone_dropdown_label(milestone_title, default_label = "Milestone")
+  def milestone_dropdown_label(milestone_title, default_label = "里程碑")
     if milestone_title == Milestone::Upcoming.name
       milestone_title = Milestone::Upcoming.title
     end
@@ -88,7 +88,7 @@ module IssuablesHelper
 
   def issuable_meta(issuable, project, text)
     output = content_tag :strong, "#{text} #{issuable.to_reference}", class: "identifier"
-    output << " opened #{time_ago_with_tooltip(issuable.created_at)} by ".html_safe
+    output << " 在 #{time_ago_with_tooltip(issuable.created_at)} 由 ".html_safe
     output << content_tag(:strong) do
       author_output = link_to_member(project, issuable.author, size: 24, mobile_classes: "hidden-xs", tooltip: true)
       author_output << link_to_member(project, issuable.author, size: 24, by_username: true, avatar: false, mobile_classes: "hidden-sm hidden-md hidden-lg")
@@ -120,7 +120,10 @@ module IssuablesHelper
 
   def issuables_state_counter_text(issuable_type, state)
     titles = {
-      opened: "Open"
+      opened: "未关闭",
+      merged: "已合并",
+      closed: "已关闭",
+      all:"全部",
     }
 
     state_title = titles[state] || state.to_s.humanize
@@ -171,7 +174,7 @@ module IssuablesHelper
 
   def issuables_count_for_state(issuable_type, state)
     issuables_finder = public_send("#{issuable_type}_finder")
-    
+
     params = issuables_finder.params.merge(state: state)
     finder = issuables_finder.class.new(issuables_finder.current_user, params)
 

@@ -17,11 +17,11 @@ module CiStatusHelper
   def ci_label_for_status(status)
     case status
     when 'success'
-      'passed'
+      '通过'
     when 'success_with_warnings'
-      'passed with warnings'
+      '通过与警告'
     else
-      status
+      ci_status_zh(status)
     end
   end
 
@@ -56,6 +56,23 @@ module CiStatusHelper
     custom_icon(icon_name)
   end
 
+  def ci_status_zh(status)
+    case status
+      when 'pending'
+        '排队'
+      when 'running'
+        '运行'
+      when 'success'
+        '成功'
+      when 'failed'
+        '失败'
+      when 'canceled'
+        '取消'
+      else
+        '未知'
+    end
+  end
+
   def render_commit_status(commit, ref: nil, tooltip_placement: 'auto left')
     project = commit.project
     path = pipelines_namespace_project_commit_path(
@@ -64,7 +81,7 @@ module CiStatusHelper
       commit)
 
     render_status_with_link(
-      'commit',
+      '提交',
       commit.status(ref),
       path,
       tooltip_placement: tooltip_placement)
@@ -73,7 +90,7 @@ module CiStatusHelper
   def render_pipeline_status(pipeline, tooltip_placement: 'auto left')
     project = pipeline.project
     path = namespace_project_pipeline_path(project.namespace, project, pipeline)
-    render_status_with_link('pipeline', pipeline.status, path, tooltip_placement: tooltip_placement)
+    render_status_with_link('管道', pipeline.status, path, tooltip_placement: tooltip_placement)
   end
 
   def no_runners_for_project?(project)

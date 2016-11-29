@@ -5,11 +5,11 @@ class EmailsOnPushService < Service
   validates :recipients, presence: true, if: :activated?
 
   def title
-    'Emails on push'
+    '推送电子邮件'
   end
 
   def description
-    'Email the commits and diff of each push to a list of recipients.'
+    '将每次推送的提交和差异通过电子邮件发送给收件人列表。'
   end
 
   def to_param
@@ -43,11 +43,11 @@ class EmailsOnPushService < Service
   def fields
     domains = Notify.allowed_email_domains.map { |domain| "user@#{domain}" }.join(", ")
     [
-      { type: 'checkbox', name: 'send_from_committer_email', title: "Send from committer",
-        help: "Send notifications from the committer's email address if the domain is part of the domain GitLab is running on (e.g. #{domains})." },
-      { type: 'checkbox', name: 'disable_diffs', title: "Disable code diffs",
-        help: "Don't include possibly sensitive code diffs in notification body." },
-      { type: 'textarea', name: 'recipients', placeholder: 'Emails separated by whitespace' },
+      { type: 'checkbox', name: 'send_from_committer_email', title: "从提交者发送",
+        help: "如果域是GitLab正在运行的域 (例如： #{domains})的一部分，则从提交者的电子邮件地址发送通知。" },
+      { type: 'checkbox', name: 'disable_diffs', title: "停用代码差异",
+        help: "不要在通知正文中包括可能敏感的代码差异。" },
+      { type: 'textarea', name: 'recipients', placeholder: '以空格分隔的电子邮件' },
     ]
   end
 end

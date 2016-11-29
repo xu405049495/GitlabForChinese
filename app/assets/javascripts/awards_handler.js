@@ -341,7 +341,7 @@
           emoji = frequentlyUsedEmojis[i];
           $(".emoji-menu-content [data-emoji='" + emoji + "']").closest('li').clone().appendTo(ul);
         }
-        $('.emoji-menu-content').prepend(ul).prepend($('<h5>').text('Frequently used'));
+        $('.emoji-menu-content').prepend(ul).prepend($('<h5>').text('常用'));
       }
       return this.frequentEmojiBlockRendered = true;
     };
@@ -355,7 +355,7 @@
           $('ul.emoji-menu-search, h5.emoji-search').remove();
           if (term) {
             // Generate a search result block
-            h5 = $('<h5 class="emoji-search" />').text('Search results');
+            h5 = $('<h5 class="emoji-search" />').text('搜索结果');
             found_emojis = _this.searchEmojis(term).show();
             ul = $('<ul>').addClass('emoji-menu-list emoji-menu-search').append(found_emojis);
             $('.emoji-menu-content ul, .emoji-menu-content h5').hide();
